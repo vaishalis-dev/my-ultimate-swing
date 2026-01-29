@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Ultimate Swing</title>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./output.css" />
+  </head>
+
+  <body
+    class="min-h-screen bg-linear-to-b from-[#2e335a] to-[#1c1b33] bg-fixed"
+  >
+    <!-- GLOBAL HEADER -->
+    <!-- <header class="w-full fixed top-0 left-0 z-10 bg-linear-to-b from-[#3f2f74] to-[#632da6] backdrop-blur-[88px] border-b border-white/15"> -->
+    <header
+      class="w-full fixed top-0 left-0 z-10 bg-linear-to-b from-[#3f2f74]/70 to-[#632da6]/70 backdrop-blur-[10px] border-b border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.18)]"
+    >
+      <div class="max-w-[85%] mx-auto p-4">
+        <div class="flex items-center justify-between">
+          <!-- LEFT -->
+          <div class="flex items-center gap-4">
+            <div
+              class="flex h-11.5 w-11 items-center justify-center rounded-lg bg-white/80 backdrop-blur-md"
+            >
+              <img
+                src="./images/logo.svg"
+                alt="My Ultimate Swing logo"
+                class="w-10"
+              />
+            </div>
+
+            <div>
+              <h1
+                class="font-['Space_Grotesk'] text-[26px] font-medium leading-[32.87px] text-white"
+              >
+                MY ULTIMATE SWING
+              </h1>
+              <p
+                class="font-['League_Spartan'] text-[19px] leading-[19.74px] tracking-[-0.37px] text-[#40cbd8]"
+              >
+                Every great swing is personal!
+              </p>
+            </div>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="flex items-center gap-8">
+            <span class="h-9 w-[1.5px] bg-white/35"></span>
+
+            <div class="flex items-center gap-1">
+              <div class="flex h-10 w-9.5 items-center justify-center">
+                <img src="./images/icons/down_arrow.svg" class="w-6" />
+              </div>
+
+              <div class="flex flex-col font-['Montserrat']">
+                <span
+                  class="text-[29px] font-bold leading-none tracking-[-0.2px] text-[#40cbd8]"
+                >
+                  10K+
+                </span>
+                <span
+                  class="text-[11.74px] font-semibold leading-tight tracking-[-0.11px] text-white"
+                >
+                  Download
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main
+      style="
+        height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: y mandatory;
+        position: relative;
+      "
+    >
+      <!-- Hero Section -->
+      <section
+        class="relative min-h-screen overflow-hidden pt-24"
+        style=" 
+          height: 100vh;
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
+        "
+      >
+        <!-- Inline svg -->
+        <svg
+          viewBox="0 0 1440 1024"
+          preserveAspectRatio="none"
+          fill="none"
+          class="absolute top-10 left-0 w-full h-full"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g data-figma-bg-blur-radius="31.4003">
+            <path
+              d="M678.5 382C793 254.5 960.5 240.5 1200 213C1376.99 192.677 1432.21 114.185 1440 68.9644V0H0V1024H121.5C41 935 148 757.5 187 732.5C226 707.5 299.5 705 258 570.5C216.5 436 329.5 395.5 398 425C466.5 454.5 564 509.5 678.5 382Z"
+              fill="url(#paint0_linear_636_666)"
+              fill-opacity="0.2"
+            />
+            <g
+              clip-path="url(#paint1_angular_636_666_clip_path)"
+              data-figma-skip-parse="true"
+            >
+              <g transform="matrix(1.1145 0.4045 0.4045 -1.1145 325.5 619.5)">
+                <foreignObject
+                  x="-1000.68"
+                  y="-1000.68"
+                  width="2001.36"
+                  height="2001.36"
+                  ><div
+                    xmlns="http://www.w3.org/1999/xhtml"
+                    style="
+                      background: conic-gradient(
+                        from 90deg,
+                        rgba(97, 46, 171, 1) 0deg,
+                        rgba(97, 46, 171, 0) 360deg
+                      );
+                      height: 100%;
+                      width: 100%;
+                      opacity: 1;
+                    "
+                  ></div
+                ></foreignObject>
+              </g>
+            </g>
+          </g>
+          <defs>
+            <clipPath
+              id="bgblur_0_636_666_clip_path"
+              transform="translate(0 0)"
+            >
+              <path
+                d="M678.5 382C793 254.5 960.5 240.5 1200 213C1376.99 192.677 1432.21 114.185 1440 68.9644V0H0V1024H121.5C41 935 148 757.5 187 732.5C226 707.5 299.5 705 258 570.5C216.5 436 329.5 395.5 398 425C466.5 454.5 564 509.5 678.5 382Z"
+              />
+            </clipPath>
+            <clipPath id="paint1_angular_636_666_clip_path">
+              <path
+                d="M678.5 382C793 254.5 960.5 240.5 1200 213C1376.99 192.677 1432.21 114.185 1440 68.9644V0H0V1024H121.5C41 935 148 757.5 187 732.5C226 707.5 299.5 705 258 570.5C216.5 436 329.5 395.5 398 425C466.5 454.5 564 509.5 678.5 382Z"
+              />
+            </clipPath>
+            <linearGradient
+              id="paint0_linear_636_666"
+              x1="1201.85"
+              y1="40.96"
+              x2="310.405"
+              y2="1157.79"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#2E335A" />
+              <stop offset="1" stop-color="#1C1B33" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <div class="relative max-w-[85%] mx-auto px-6 py-15">
+          <div class="grid grid-cols-1 lg:grid-cols-2 items-start gap-10">
+            <!-- LEFT CONTENT -->
+            <div class="text-white font-['Inter'] pt-6">
+              <span
+                class="inline-block rounded-full text-2xl bg-[#EFB20C] px-10 py-2 mb-8 font-semibold"
+                >The Genesis</span
+              >
+              <p class="max-w-2xl text-2xl font-light text-white/85">
+                My Ultimate Swing wasn't created in a boardroom; it was forged
+                on the fairway. We realized that every golfer possesses a unique
+                signature style, yet the physics of a great shot remain
+                universal.<br />
+                <span class="text-[#40CBD8] font-medium"
+                  >We believe improvement is an art, not a shortcut.</span
+                ><br />
+                <span class="text-white"
+                  >Our mission is to turn practice into a journey of self</span
+                >-refinement. By combining advanced motion tracking with an
+                intuitive user experience, we bridge the gap between complex
+                data and the love of the game. We built this for the player who
+                knows their best round is still out there, waiting to be played.
+              </p>
+            </div>
+
+            <!-- RIGHT IMAGE -->
+            <div class="flex justify-center md:justify-end pt-6">
+              <div class="overflow-hidden rounded-2xl shadow-2xl">
+                <img
+                  src="./images/Golfer_swing.svg"
+                  alt="Golfer swing"
+                  class="h-130 w-[320px] object-cover lg:h-140 lg:w-115"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <section class="pt-64" style=" 
+          height: 100vh;
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
+        ">
+        <div class="relative max-w-[85%] flex mx-auto px-6 pb-6">
+          <!-- Left-Sticky-Wrapper -->
+          <div class="max-w-xl">
+            <div class="active" id="text-record">
+              <div class="flex gap-6 items-center mb-6">
+                <img
+                  src="./images/recording.svg"
+                  alt="Recording Image"
+                  class="h-20 w-20"
+                />
+                <h2 class="text-[#40CBD8] font-bold text-xl">Record Swing</h2>
+              </div>
+              <p class="text-white text-lg">
+                <span class="text-[#40CBD8] italic"
+                  >Every masterpiece begins with a first stroke. Record
+                  yours.</span
+                >
+                <br />Recording your swing isn't about capturing perfection,
+                it's about honoring the process. Save it as your Ultimate Swing
+                or add it to your gallery, it's the beginning of refinement
+                through intention, observation, and repetition.
+              </p>
+            </div>
+
+            <div class="next hidden" id="text-compare">
+              <div class="flex gap-6 items-center mb-6">
+                <img
+                  src="./images/compare.svg"
+                  alt="Compare Image"
+                  class="h-20 w-20"
+                />
+                <h2 class="text-[#40CBD8] font-bold text-xl">Compare</h2>
+              </div>
+              <p class="text-white text-lg">
+                <span class="text-[#40CBD8] italic"
+                  >Clarity shapes mastery.</span
+                >
+                <br />Comparison is not about judgment, it's about clarity. By
+                placing your current swing beside your Ultimate, the difference
+                becomes insight. Each variation reveals where your craft can be
+                sharpened.
+              </p>
+            </div>
+
+            <div class="next hidden" id="text-analyze">
+              <div class="flex gap-6 items-center mb-6">
+                <img
+                  src="./images/analyze.svg"
+                  alt="Analyze image"
+                  class="h-20 w-20"
+                />
+                <h2 class="text-[#40CBD8] font-bold text-xl">Analyze</h2>
+              </div>
+              <p class="text-white text-lg">
+                <span class="text-[#40CBD8] italic"
+                  >Where intuition meets intelligence.</span
+                >
+                <br />Analysis transforms movement into meaning. By measuring
+                your swing against your Ultimate, the app exposes subtle
+                misalignments, and uncovers the details that shape performance.
+                This is where practice becomes precise, and refinement becomes
+                intentional.
+              </p>
+            </div>
+
+            <div class="next hidden" id="text-insight">
+              <div class="flex gap-6 items-center mb-6">
+                <img
+                  src="./images/insight.svg"
+                  alt="Recording Image"
+                  class="h-20 w-20"
+                />
+                <h2 class="text-[#40CBD8] font-bold text-xl">Insight</h2>
+              </div>
+              <p class="text-white text-lg">
+                <span class="text-[#40CBD8] italic"
+                  >Where awareness becomes evolution.</span
+                >
+                <br />Insight turns understanding into action. From your
+                analysis and comparisons, we deliver clear guidance that
+                sharpens focus, refines movements, and gives direction to every
+                practice session. This is where refinement becomes progress.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right-Scroll-Wrapper -->
+          <div class="relative w-full min-h-225">
+            <!-- SVG Dotted Connector -->
+            <svg
+              class="absolute inset-0 w-full h-full pointer-events-none"
+              viewBox="0 0 600 900"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- 01 → 02 -->
+              <path
+                d="M420 140 C 480 220, 320 300, 300 360"
+                stroke="#F5C542"
+                stroke-width="3"
+                stroke-dasharray="8 10"
+                stroke-linecap="round"
+                opacity="0.9"
+              />
+
+              <!-- 02 → 03 -->
+              <path
+                d="M300 430 C 260 520, 420 600, 420 660"
+                stroke="#E54C9A"
+                stroke-width="3"
+                stroke-dasharray="8 10"
+                stroke-linecap="round"
+                opacity="0.9"
+              />
+
+              <!-- 03 → 04 -->
+              <path
+                d="M390 740 C 450 820, 260 900, 260 980"
+                stroke="#7C6BFF"
+                stroke-width="3"
+                stroke-dasharray="8 10"
+                stroke-linecap="round"
+                opacity="0.9"
+              />
+            </svg>
+
+            <!-- IMAGE 01 -->
+            <div class="absolute top-0 right-0">
+              <img
+                src="./images/Image1.svg"
+                class="w-[420px] rounded-2xl shadow-xl"
+                alt=""
+              />
+            </div>
+
+            <!-- IMAGE 02 -->
+            <div class="absolute top-[350px] left-[180px]">
+              <img
+                src="./images/Image2.svg"
+                class="w-[420px] rounded-2xl shadow-xl"
+                alt=""
+              />
+            </div>
+
+            <!-- IMAGE 03 -->
+            <div class="absolute top-[660px] right-0">
+              <img
+                src="./images/Image3.svg"
+                class="w-[420px] rounded-2xl shadow-xl"
+                alt=""
+              />
+            </div>
+
+            <!-- IMAGE 04 -->
+            <div class="absolute top-[950px] left-[180px]">
+              <img
+                src="./images/Image4.svg"
+                class="w-[420px] rounded-2xl shadow-xl"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer></footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "my_ultimate_swing",
+  "version": "1.0.0",
+  "main": "./src/index.html",
+  "scripts": {
+    "tailwind": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
+    "serve": "live-server ./src --port=5500",
+    "dev": "concurrently \"npm run tailwind\" \"npm run serve\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "concurrently": "^9.2.1",
+    "live-server": "^1.2.2",
+    "tailwindcss": "^4.1.18"
+  }
+}
