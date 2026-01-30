@@ -24,15 +24,97 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./output.css" />
+    <!-- <script src="./js/script.js" defer></script> -->
+    <style>
+      #scrollContainer {
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+
+        /* Hide scrollbar */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE & Edge */
+      }
+
+      #scrollContainer::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .scroll-container {
+        height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+      }
+
+      section {
+        min-height: 100vh;
+        scroll-snap-align: start;
+        /* scroll-snap-stop: always; */
+        scroll-snap-stop: normal; /* Allow smooth coasting between sections */
+      }
+
+      /* Smooth transition for section content */
+      section > * {
+        transition:
+          opacity 0.4s ease-out,
+          transform 0.4s ease-out;
+      }
+
+      /* Add a subtle fade transition between sections */
+      .scroll-section {
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .scroll-section {
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      /* Text items styling */
+      .text-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+      }
+
+      .text-item.active {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .text-item.prev {
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateY(-40px);
+      }
+    </style>
   </head>
 
   <body
-    class="min-h-screen bg-linear-to-b from-[#2e335a] to-[#1c1b33] bg-fixed"
+    class="min-h-screen overflow-hidden bg-linear-to-b from-[#2e335a] to-[#1c1b33]"
   >
     <!-- GLOBAL HEADER -->
     <!-- <header class="w-full fixed top-0 left-0 z-10 bg-linear-to-b from-[#3f2f74] to-[#632da6] backdrop-blur-[88px] border-b border-white/15"> -->
     <header
-      class="w-full fixed top-0 left-0 z-10 bg-linear-to-b from-[#3f2f74]/70 to-[#632da6]/70 backdrop-blur-[10px] border-b border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.18)]"
+      class="w-full fixed top-0 left-0 z-10 bg-linear-to-b from-[#3f2f74]/70 to-[#632da6]/70 backdrop-blur-[10px]"
     >
       <div class="max-w-[85%] mx-auto p-4">
         <div class="flex items-center justify-between">
@@ -44,7 +126,7 @@
               <img
                 src="./images/logo.svg"
                 alt="My Ultimate Swing logo"
-                class="w-10"
+                class="w-20"
               />
             </div>
 
@@ -89,25 +171,9 @@
       </div>
     </header>
 
-    <main
-      style="
-        height: 100vh;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: y mandatory;
-        position: relative;
-      "
-    >
+    <main id="scrollContainer" class="scroll-container relative">
       <!-- Hero Section -->
-      <section
-        class="relative min-h-screen overflow-hidden pt-24"
-        style=" 
-          height: 100vh;
-          scroll-snap-align: start;
-          scroll-snap-stop: always;
-        "
-      >
+      <section class="scroll-section relative pt-24 min-h-screen flex flex-col">
         <!-- Inline svg -->
         <svg
           viewBox="0 0 1440 1024"
@@ -203,7 +269,7 @@
             </div>
 
             <!-- RIGHT IMAGE -->
-            <div class="flex justify-center md:justify-end pt-6">
+            <div class="parallax-img flex justify-center md:justify-end pt-6">
               <div class="overflow-hidden rounded-2xl shadow-2xl">
                 <img
                   src="./images/Golfer_swing.svg"
@@ -214,102 +280,115 @@
             </div>
           </div>
         </div>
+
+        <!-- scroll indicator -->
+        <div
+          class="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-sm animate-bounce"
+        >
+          Scroll ↓
+        </div>
       </section>
 
       <!-- Main Content -->
-      <section class="pt-64" style=" 
-          height: 100vh;
-          scroll-snap-align: start;
-          scroll-snap-stop: always;
-        ">
-        <div class="relative max-w-[85%] flex mx-auto px-6 pb-6">
+      <section
+        id="main-content"
+        class="scroll-section relative min-h-screen pt-64"
+      >
+        <div class="relative max-w-[85%] flex mx-auto px-6 pb-6 gap-8">
           <!-- Left-Sticky-Wrapper -->
-          <div class="max-w-xl">
-            <div class="active" id="text-record">
-              <div class="flex gap-6 items-center mb-6">
-                <img
-                  src="./images/recording.svg"
-                  alt="Recording Image"
-                  class="h-20 w-20"
-                />
-                <h2 class="text-[#40CBD8] font-bold text-xl">Record Swing</h2>
+          <div class="w-1/2 sticky top-65 left-30 h-fit">
+            <div class="relative max-w-xl min-h-75">
+              <!-- Text 1: Record Swing -->
+              <div class="text-item active" id="text-record">
+                <div class="flex gap-6 items-center mb-6">
+                  <img
+                    src="./images/recording.svg"
+                    alt="Recording Image"
+                    class="h-20 w-20"
+                  />
+                  <h2 class="text-[#40CBD8] font-bold text-xl">Record Swing</h2>
+                </div>
+                <p class="text-white text-lg">
+                  <span class="text-[#40CBD8] italic"
+                    >Every masterpiece begins with a first stroke. Record
+                    yours.</span
+                  >
+                  <br />Recording your swing isn't about capturing perfection,
+                  it's about honoring the process. Save it as your Ultimate
+                  Swing or add it to your gallery, it's the beginning of
+                  refinement through intention, observation, and repetition.
+                </p>
               </div>
-              <p class="text-white text-lg">
-                <span class="text-[#40CBD8] italic"
-                  >Every masterpiece begins with a first stroke. Record
-                  yours.</span
-                >
-                <br />Recording your swing isn't about capturing perfection,
-                it's about honoring the process. Save it as your Ultimate Swing
-                or add it to your gallery, it's the beginning of refinement
-                through intention, observation, and repetition.
-              </p>
-            </div>
 
-            <div class="next hidden" id="text-compare">
-              <div class="flex gap-6 items-center mb-6">
-                <img
-                  src="./images/compare.svg"
-                  alt="Compare Image"
-                  class="h-20 w-20"
-                />
-                <h2 class="text-[#40CBD8] font-bold text-xl">Compare</h2>
+              <!-- Text 2: Compare -->
+              <div class="text-item" id="text-compare">
+                <div class="flex gap-6 items-center mb-6">
+                  <img
+                    src="./images/compare.svg"
+                    alt="Compare Image"
+                    class="h-20 w-20"
+                  />
+                  <h2 class="text-[#40CBD8] font-bold text-xl">Compare</h2>
+                </div>
+                <p class="text-white text-lg">
+                  <span class="text-[#40CBD8] italic"
+                    >Clarity shapes mastery.</span
+                  >
+                  <br />Comparison is not about judgment, it's about clarity. By
+                  placing your current swing beside your Ultimate, the
+                  difference becomes insight. Each variation reveals where your
+                  craft can be sharpened.
+                </p>
               </div>
-              <p class="text-white text-lg">
-                <span class="text-[#40CBD8] italic"
-                  >Clarity shapes mastery.</span
-                >
-                <br />Comparison is not about judgment, it's about clarity. By
-                placing your current swing beside your Ultimate, the difference
-                becomes insight. Each variation reveals where your craft can be
-                sharpened.
-              </p>
-            </div>
 
-            <div class="next hidden" id="text-analyze">
-              <div class="flex gap-6 items-center mb-6">
-                <img
-                  src="./images/analyze.svg"
-                  alt="Analyze image"
-                  class="h-20 w-20"
-                />
-                <h2 class="text-[#40CBD8] font-bold text-xl">Analyze</h2>
+              <!-- Text 3: Analyze -->
+              <div class="text-item" id="text-analyze">
+                <div class="flex gap-6 items-center mb-6">
+                  <img
+                    src="./images/analyze.svg"
+                    alt="Analyze image"
+                    class="h-20 w-20"
+                  />
+                  <h2 class="text-[#40CBD8] font-bold text-xl">Analyze</h2>
+                </div>
+                <p class="text-white text-lg">
+                  <span class="text-[#40CBD8] italic"
+                    >Where intuition meets intelligence.</span
+                  >
+                  <br />Analysis transforms movement into meaning. By measuring
+                  your swing against your Ultimate, the app exposes subtle
+                  misalignments, and uncovers the details that shape
+                  performance. This is where practice becomes precise, and
+                  refinement becomes intentional.
+                </p>
               </div>
-              <p class="text-white text-lg">
-                <span class="text-[#40CBD8] italic"
-                  >Where intuition meets intelligence.</span
-                >
-                <br />Analysis transforms movement into meaning. By measuring
-                your swing against your Ultimate, the app exposes subtle
-                misalignments, and uncovers the details that shape performance.
-                This is where practice becomes precise, and refinement becomes
-                intentional.
-              </p>
-            </div>
 
-            <div class="next hidden" id="text-insight">
-              <div class="flex gap-6 items-center mb-6">
-                <img
-                  src="./images/insight.svg"
-                  alt="Recording Image"
-                  class="h-20 w-20"
-                />
-                <h2 class="text-[#40CBD8] font-bold text-xl">Insight</h2>
+              <!-- Text 4: Insight -->
+              <div class="text-item" id="text-insight">
+                <div class="flex gap-6 items-center mb-6">
+                  <img
+                    src="./images/insight.svg"
+                    alt="Recording Image"
+                    class="h-20 w-20"
+                  />
+                  <h2 class="text-[#40CBD8] font-bold text-xl">Insight</h2>
+                </div>
+                <p class="text-white text-lg">
+                  <span class="text-[#40CBD8] italic"
+                    >Where awareness becomes evolution.</span
+                  >
+                  <br />Insight turns understanding into action. From your
+                  analysis and comparisons, we deliver clear guidance that
+                  sharpens focus, refines movements, and gives direction to
+                  every practice session. This is where refinement becomes
+                  progress.
+                </p>
               </div>
-              <p class="text-white text-lg">
-                <span class="text-[#40CBD8] italic"
-                  >Where awareness becomes evolution.</span
-                >
-                <br />Insight turns understanding into action. From your
-                analysis and comparisons, we deliver clear guidance that
-                sharpens focus, refines movements, and gives direction to every
-                practice session. This is where refinement becomes progress.
-              </p>
             </div>
           </div>
 
           <!-- Right-Scroll-Wrapper -->
-          <div class="relative w-full min-h-225">
+          <div class="relative w-full min-h-325">
             <!-- SVG Dotted Connector -->
             <svg
               class="absolute inset-0 w-full h-full pointer-events-none"
@@ -387,8 +466,124 @@
         </div>
       </section>
 
+      <!-- Key Features -->
+      <section
+        class="scroll-section relative pt-32 pb-5 min-h-screen flex flex-col gap-20"
+      >
+        <div class="relative max-w-[85%] mx-auto flex gap-40">
+          <!-- Left side -->
+          <div class="w-1/2 flex flex-col gap-6">
+            <h3
+              class="text-3xl font-bold bg-linear-to-b from-[#FDCB1D] to-[#E79103] bg-clip-text text-transparent"
+            >
+              Key Features
+            </h3>
+            <p class="text-[#FFFFFFCC] font-['Inter'] text-lg">
+              Improvement begins with clarity. My Ultimate Swing transforms
+              movement into understanding, giving you a deeper connection to
+              your swing and a stronger relationship with your craft. It is
+              where intention meets awareness, and practice becomes
+              purposeful.This is not about chasing perfection or swinging
+              harder. It is about refining with precision, practicing with
+              meaning, and shaping progress through insight. Here, technology
+              serves the art of improvement, turning complexity into direction
+              and effort into evolution.My Ultimate Swing supports the
+              disciplined pursuit of better. Every motion recorded, every
+              comparison made, and every insight revealed is part of a process
+              that honors patience, mastery, and personal growth.Because
+              improvement is not a moment. It is a journey.
+            </p>
+          </div>
+
+          <!-- Right side -->
+          <div class="w-1/2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Card -->
+              <div
+                class="relative rounded-2xl p-6 border border-white bg-[#28214d]"
+              >
+                <img
+                  src="./images/icons/video_cmparison.svg"
+                  alt="Video Comparison"
+                  class="w-20"
+                />
+                <h4 class="text-[#40CBD8] text-lg">VIDEO COMPARISON</h4>
+                <p class="text-sm text-white">
+                  Place your present beside your Ultimate. See subtle
+                  differences, reveal hidden patterns, and let contrast guide
+                  refinement.
+                </p>
+              </div>
+              <div
+                class="relative rounded-2xl p-6 border border-white bg-[#28214d]"
+              >
+                <img
+                  src="./images/icons/progress_tracking.png"
+                  alt="PROGRESS TRACKING"
+                  class="w-20"
+                />
+                <h4 class="text-[#40CBD8] text-lg">PROGRESS TRACKING</h4>
+                <p class="text-sm text-white">
+                  Progress is a journey, not a moment. Track your evolution over
+                  time and watch intention turn into measurable growth.
+                </p>
+              </div>
+              <div
+                class="relative rounded-2xl p-6 border border-white bg-[#28214d]"
+              >
+                <img
+                  src="./images/icons/swing_library.png"
+                  alt="SWING TRACKING"
+                  class="w-20"
+                />
+                <h4 class="text-[#40CBD8] text-lg">SWING TRACKING</h4>
+                <p class="text-sm text-white">
+                  Your swing is your signature. Build a personal archive of
+                  movement, discovery, and refinement.
+                </p>
+              </div>
+              <div
+                class="relative rounded-2xl p-6 border border-white bg-[#28214d]"
+              >
+                <img
+                  src="./images/icons/easy_to_use.png"
+                  alt="EASY TO USE"
+                  class="w-20"
+                />
+                <h4 class="text-[#40CBD8] text-lg">EASY TO USE</h4>
+                <p class="text-sm text-white">
+                  Refinement should feel effortless.Designed to disappear into
+                  your process so your focus stays on your craft.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="relative w-full h-45 bg-[#292653]">
+          <div class="max-w-5xl mx-auto p-8 flex flex-col gap-2 justify-center items-center">
+            <p class="text-[#FFC300] text-4xl">Ready to perfect your swing</p>
+            <p class="text-white text-xl">
+              Join thousands of golfers who are improving their game with My
+              Ultimate Swing
+            </p>
+            <div class="flex gap-10">
+              <img
+                src="./images/Download_ios.svg"
+                class="rounded-2xl shadow-xl"
+                alt="Download IOS"
+              />
+              <img
+                src="./images/Download_android.svg"
+                class="rounded-2xl shadow-xl"
+                alt="Download Android"
+              />
+            </div>
+          </div>
+        </footer>
+      </section>
+
       <!-- Footer -->
-      <footer></footer>
     </main>
   </body>
 </html>
