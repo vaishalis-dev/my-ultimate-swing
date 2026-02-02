@@ -103,10 +103,10 @@
       </div>
     </header>
 
-    <main id="scrollContainer" class="relative scroll-container">
+    <main id="scrollContainer" class="relative scroll-container w-full">
       <!-- Hero Section -->
       <section
-        class="w-full relative flex flex-col min-h-screen pt-8 sm:pt-18 md:pt-24 scroll-section"
+        class="w-full min-h-screen relative flex flex-col items-center justify-center scroll-section"
       >
         <!-- Inline svg -->
         <svg
@@ -178,18 +178,19 @@
           </defs>
         </svg>
 
-        <div class="relative w-[90%] sm:w-[85%] mx-auto py-15">
-          <div
-            class="grid items-start grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-2"
-          >
-            <!-- <div class="flex justify-between"> -->
+        <div
+          class="relative w-[90%] sm:w-[85%] mx-auto pt-20 sm:pt-25 md:pt-10"
+        >
+          <div class="flex flex-col md:flex-row justify-between gap-10">
             <!-- LEFT CONTENT -->
-            <div class="text-white pt-6 font-inter">
+            <div class="text-white font-inter">
               <span
-                class="inline-block rounded-full text-2xl bg-[#EFB20C] px-10 py-2 mb-8 font-semibold"
+                class="inline-block rounded-full text-xl sm:text-2xl bg-[#EFB20C] px-10 py-2 mb-8 font-semibold"
                 >The Genesis</span
               >
-              <p class="max-w-2xl text-2xl font-light text-white/85">
+              <p
+                class="w-full sm:max-w-2xl text-lg sm:text-xl md:text-2xl font-light leading-snug text-white/85"
+              >
                 My Ultimate Swing wasn't created in a boardroom; it was forged
                 on the fairway. We realized that every golfer possesses a unique
                 signature style, yet the physics of a great shot remain
@@ -207,12 +208,14 @@
             </div>
 
             <!-- RIGHT IMAGE -->
-            <div class="flex justify-center pt-6 parallax-img md:justify-end">
-              <div class="overflow-hidden shadow-2xl rounded-2xl">
+            <div class="flex justify-center md:justify-end">
+              <div
+                class="overflow-hidden shadow-2xl rounded-2xl h-auto md:h-145 w-full md:w-auto"
+              >
                 <img
                   src="./images/Golfer_swing.svg"
                   alt="Golfer swing"
-                  class="h-130 w-[320px] object-cover lg:h-140 lg:w-115"
+                  class="object-cover w-full h-full"
                 />
               </div>
             </div>
@@ -225,309 +228,6 @@
         >
           Scroll ↓
         </div> -->
-      </section>
-
-      <!-- Main Content -->
-      <section
-        id="main-content"
-        class="relative min-h-screen pt-18 sm:pt-24 md:pt-64 scroll-section"
-      >
-        <div
-          class="relative max-w-[90%] sm:max-w-[85%] flex mx-auto pb-6 gap-8"
-        >
-          <!-- Left-Sticky-Wrapper -->
-          <div class="sticky w-1/2 top-65 left-30 h-fit">
-            <div class="relative max-w-xl min-h-75">
-              <!-- Text 1: Record Swing -->
-              <div class="text-item active" id="text-record">
-                <div class="flex items-center gap-6 mb-6">
-                  <img
-                    src="./images/recording.svg"
-                    alt="Recording Image"
-                    class="w-20 h-20"
-                  />
-                  <h2 class="text-[#40CBD8] font-bold text-xl">Record Swing</h2>
-                </div>
-                <p class="text-lg text-white">
-                  <span class="text-[#40CBD8] italic"
-                    >Every masterpiece begins with a first stroke. Record
-                    yours.</span
-                  >
-                  <br />Recording your swing isn't about capturing perfection,
-                  it's about honoring the process. Save it as your Ultimate
-                  Swing or add it to your gallery, it's the beginning of
-                  refinement through intention, observation, and repetition.
-                </p>
-              </div>
-
-              <!-- Text 2: Compare -->
-              <div class="text-item" id="text-compare">
-                <div class="flex items-center gap-6 mb-6">
-                  <img
-                    src="./images/compare.svg"
-                    alt="Compare Image"
-                    class="w-20 h-20"
-                  />
-                  <h2 class="text-[#40CBD8] font-bold text-xl">Compare</h2>
-                </div>
-                <p class="text-lg text-white">
-                  <span class="text-[#40CBD8] italic"
-                    >Clarity shapes mastery.</span
-                  >
-                  <br />Comparison is not about judgment, it's about clarity. By
-                  placing your current swing beside your Ultimate, the
-                  difference becomes insight. Each variation reveals where your
-                  craft can be sharpened.
-                </p>
-              </div>
-
-              <!-- Text 3: Analyze -->
-              <div class="text-item" id="text-analyze">
-                <div class="flex items-center gap-6 mb-6">
-                  <img
-                    src="./images/analyze.svg"
-                    alt="Analyze image"
-                    class="w-20 h-20"
-                  />
-                  <h2 class="text-[#40CBD8] font-bold text-xl">Analyze</h2>
-                </div>
-                <p class="text-lg text-white">
-                  <span class="text-[#40CBD8] italic"
-                    >Where intuition meets intelligence.</span
-                  >
-                  <br />Analysis transforms movement into meaning. By measuring
-                  your swing against your Ultimate, the app exposes subtle
-                  misalignments, and uncovers the details that shape
-                  performance. This is where practice becomes precise, and
-                  refinement becomes intentional.
-                </p>
-              </div>
-
-              <!-- Text 4: Insight -->
-              <div class="text-item" id="text-insight">
-                <div class="flex items-center gap-6 mb-6">
-                  <img
-                    src="./images/insight.svg"
-                    alt="Recording Image"
-                    class="w-20 h-20"
-                  />
-                  <h2 class="text-[#40CBD8] font-bold text-xl">Insight</h2>
-                </div>
-                <p class="text-lg text-white">
-                  <span class="text-[#40CBD8] italic"
-                    >Where awareness becomes evolution.</span
-                  >
-                  <br />Insight turns understanding into action. From your
-                  analysis and comparisons, we deliver clear guidance that
-                  sharpens focus, refines movements, and gives direction to
-                  every practice session. This is where refinement becomes
-                  progress.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right-Scroll-Wrapper -->
-          <div class="relative w-full min-h-325 right-scroll-wrapper">
-            <!-- SVG Dotted Connector -->
-            <svg
-              id="connectorSvg"
-              class="absolute inset-0 w-full h-full pointer-events-none"
-              xmlns="http://www.w3.org/2000/svg"
-            ></svg>
-            <!-- <svg
-              class="absolute inset-0 w-full h-full pointer-events-none"
-              viewBox="0 0 600 900"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            > -->
-            <!-- 01 → 02 
-              <path
-                d="M420 140 C 480 220, 320 300, 300 360"
-                stroke="#F5C542"
-                stroke-width="3"
-                stroke-dasharray="8 10"
-                stroke-linecap="round"
-                opacity="0.9"
-              />-->
-
-            <!-- 02 → 03 
-              <path
-                d="M300 430 C 260 520, 420 600, 420 660"
-                stroke="#E54C9A"
-                stroke-width="3"
-                stroke-dasharray="8 10"
-                stroke-linecap="round"
-                opacity="0.9"
-              />-->
-
-            <!-- 03 → 04 
-              <path
-                d="M390 740 C 450 820, 260 900, 260 980"
-                stroke="#7C6BFF"
-                stroke-width="3"
-                stroke-dasharray="8 10"
-                stroke-linecap="round"
-                opacity="0.9"
-              />-->
-            <!-- </svg> -->
-
-            <!-- IMAGE 01 -->
-            <div
-              class="absolute flex gap-0 step-image active top-0 right-0"
-              data-step="0"
-              data-anchor
-            >
-              <div
-                class="flex overflow-hidden border-4 border-r-0 border-white rounded-l-2xl group image-wrapper"
-              >
-                <!-- LEFT IMAGE -->
-                <div class="relative overflow-hidden h-60 w-80">
-                  <img
-                    src="./images/Image01.svg"
-                    alt="Image01"
-                    class="object-cover w-full h-full"
-                  />
-                </div>
-              </div>
-              <!-- RIGHT PANEL -->
-              <div
-                class="bg-linear-to-b from-[#FDCB1D] to-[#E79103] flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-r-2xl"
-              >
-                <span class="text-6xl font-bold text-white">01</span>
-                <p
-                  class="text-sm font-semibold tracking-wide text-white uppercase"
-                >
-                  Record
-                </p>
-              </div>
-            </div>
-
-            <!-- IMAGE 02 -->
-            <div
-              class="absolute flex gap-0 step-image top-[350px] left-[180px]"
-              data-step="1"
-              data-anchor
-            >
-              <!-- LEFT PANEL -->
-              <div
-                class="bg-linear-to-b from-[#EB59B2] to-[#B7217D] flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-l-2xl"
-              >
-                <span class="text-6xl font-bold text-white">02</span>
-                <p
-                  class="text-sm font-semibold tracking-wide text-white uppercase"
-                >
-                  Compare
-                </p>
-              </div>
-
-              <div
-                class="flex overflow-hidden border-4 border-l-0 border-white rounded-r-2xl group image-wrapper"
-              >
-                <!-- RIGHT IMAGE -->
-                <div class="relative flex gap-0 overflow-hidden h-60 w-80">
-                  <img
-                    src="./images/Image02.svg"
-                    alt="Image02"
-                    class="w-full h-full"
-                  />
-                  <img
-                    src="./images/Image02.svg"
-                    alt="Image02"
-                    class="w-full h-full"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- IMAGE 03 -->
-            <div
-              class="absolute flex gap-0 step-image top-[660px] right-0"
-              data-step="2"
-              data-anchor
-            >
-              <div
-                class="flex overflow-hidden border-4 border-r-0 border-white rounded-l-2xl group image-wrapper"
-              >
-                <!-- LEFT IMAGE -->
-                <div class="relative overflow-hidden h-60 w-80">
-                  <img
-                    src="./images/Image03.svg"
-                    alt="Image03"
-                    class="object-cover w-full h-full"
-                  />
-                </div>
-              </div>
-              <!-- RIGHT PANEL -->
-              <div
-                class="bg-linear-to-b from-[#A576C7] to-[#68408C] flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-r-2xl"
-              >
-                <span class="text-6xl font-bold text-white">03</span>
-                <p
-                  class="text-sm font-semibold tracking-wide text-white uppercase"
-                >
-                  Analyze
-                </p>
-              </div>
-            </div>
-
-            <!-- IMAGE 04 -->
-            <div
-              class="absolute flex gap-0 bg-app-gradient step-image top-[950px] left-[180px]"
-              data-step="3"
-              data-anchor
-            >
-              <!-- LEFT PANEL -->
-              <div
-                class="bg-linear-to-b from-[#EB59B2] to-[#B7217D] flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-l-2xl"
-              >
-                <span class="text-6xl font-bold text-white">04</span>
-                <p
-                  class="text-sm font-semibold tracking-wide text-white uppercase"
-                >
-                  Insight
-                </p>
-              </div>
-
-              <div
-                class="flex overflow-hidden border-4 border-l-0 border-white rounded-r-2xl group image-wrapper"
-              >
-                <!-- RIGHT IMAGE -->
-                <div class="relative flex gap-0 overflow-hidden h-60 w-80">
-                  <div class="flex items-center justify-center w-[120px]">
-                    <img
-                      src="./images/Image04.svg"
-                      alt="Insight icon"
-                      class="h-[140px] w-auto"
-                    />
-                  </div>
-                  <div class="flex flex-col justify-between flex-1 px-2 py-2">
-                    <img
-                      src="./images/Modal01.svg"
-                      alt="Image04"
-                      class="h-[80px] w-full object-contain"
-                    />
-                    <img
-                      src="./images/Modal01.svg"
-                      alt="Image04"
-                      class="h-[80px] w-full object-contain"
-                    />
-                    <img
-                      src="./images/Modal01.svg"
-                      alt="Image04"
-                      class="h-[80px] w-full object-contain"
-                    />
-                    <img
-                      src="./images/Modal01.svg"
-                      alt="Image04"
-                      class="h-[80px] w-full object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       <!-- Key Features + Footer -->
@@ -651,7 +351,7 @@
               >
                 <!-- iOS Button -->
                 <button
-                  class="flex items-center gap-1 px-6 py-3 text-black transition bg-white rounded-full shadow-lg hover:scale-105"
+                  class="flex items-center justify-center gap-2 w-55 px-6 py-3 text-black transition bg-white rounded-full shadow-lg hover:scale-105"
                 >
                   <img src="./images/icons/apple_icon.svg" alt="IOS Icon" />
                   <span class="text-sm font-bold text-black"
@@ -659,7 +359,7 @@
                   >
                 </button>
                 <button
-                  class="bg-[#99CC00] gap-1 px-6 py-3 text-white transition hover:scale-105 shadow-lg rounded-full flex items-center"
+                  class="bg-[#99CC00] justify-center gap-2 w-55 px-6 py-3 text-white transition hover:scale-105 shadow-lg rounded-full flex items-center"
                 >
                   <img
                     src="./images/icons/android_icon.svg"
@@ -672,19 +372,16 @@
               </div>
             </div>
           </div>
-        </footer>
-        <div
-          class="bg-[#16162a] border-t border-white/70 absolute bottom-0 w-full"
-        >
-          <div
-            class="max-w-[90%] sm:max-w-[85%] p-2 mx-auto flex items-center text-white/70 justify-between font-montserrat tracking-wide text-sm"
-          >
-            <p class="font-semibold">Terms of Service | Privacy Policy</p>
-            <p class="font-normal">support@myultimateswing.com</p>
+          <div class="bg-[#16162a] border-t border-white/70 w-full">
+            <div
+              class="max-w-[90%] sm:max-w-[85%] p-2 mx-auto flex items-center text-white/70 justify-between font-montserrat tracking-wide text-sm"
+            >
+              <p class="font-semibold">Terms of Service | Privacy Policy</p>
+              <p class="font-normal">support@myultimateswing.com</p>
+            </div>
           </div>
-        </div>
+        </footer>
       </section>
-      
     </main>
   </body>
 </html>
