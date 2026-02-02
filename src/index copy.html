@@ -650,3 +650,66 @@
     </main>
   </body>
 </html>
+
+<div class="relative rounded-2xl px-6 pt-4 pb-4 border border-white bg-[#28214d] flex flex-col">
+
+
+js:
+// const steps = document.querySelectorAll(".scroll-step");
+// const textItems = document.querySelectorAll(".text-item");
+
+// const observer = new IntersectionObserver(
+//   (entries) => {
+//     entries.forEach(entry => {
+//       if (entry.isIntersecting) {
+//         const index = Number(entry.target.dataset.step);
+
+//         textItems.forEach((item, i) => {
+//           item.classList.toggle("active", i === index);
+//         });
+
+//         steps.forEach((step, i) => {
+//           step.classList.toggle("active", i === index);
+//         });
+//       }
+//     });
+//   },
+//   {
+//     threshold: 0.6
+//   }
+// );
+
+// steps.forEach(step => observer.observe(step));
+
+document.addEventListener("DOMContentLoaded", () => {
+  const steps = document.querySelectorAll(".step-image");
+  const texts = document.querySelectorAll(".text-item");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = Number(entry.target.dataset.step);
+
+          steps.forEach((step, i) => {
+            step.classList.toggle("active", i === index);
+            step.style.opacity = i === index ? "1" : "0.35";
+            step.style.transform =
+              i === index ? "scale(1)" : "scale(0.92)";
+          });
+
+          texts.forEach((txt, i) => {
+            txt.classList.toggle("opacity-40", i !== index);
+          });
+        }
+      });
+    },
+    {
+      threshold: 0.55
+    }
+  );
+
+  steps.forEach(step => observer.observe(step));
+});
+
+

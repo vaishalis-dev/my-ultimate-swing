@@ -287,3 +287,74 @@ I Implement Parallax effect in it, ki ek bar me pura ek section scroll hojaye wo
     <span class="text-sm font-bold">Download on Android</span>
   </button>
 </div>
+
+
+main content code:
+
+<section id="main-content" class="relative py-32">
+  <div class="max-w-[85%] mx-auto flex gap-16">
+
+    <!-- LEFT : STICKY TEXT -->
+    <div class="w-1/2">
+      <div class="sticky top-40 space-y-24">
+
+        <div class="text-item active" data-text="0">
+          <h2 class="text-[#40CBD8] text-xl font-bold mb-4">Record Swing</h2>
+          <p class="text-white text-lg">
+            <span class="text-[#40CBD8] italic">Every masterpiece begins with a first stroke.</span><br>
+            Record your swing and begin refinement.
+          </p>
+        </div>
+
+        <div class="text-item opacity-40" data-text="1">
+          <h2 class="text-[#40CBD8] text-xl font-bold mb-4">Compare</h2>
+          <p class="text-white text-lg">
+            <span class="text-[#40CBD8] italic">Clarity shapes mastery.</span>
+          </p>
+        </div>
+
+        <div class="text-item opacity-40" data-text="2">
+          <h2 class="text-[#40CBD8] text-xl font-bold mb-4">Analyze</h2>
+          <p class="text-white text-lg">
+            <span class="text-[#40CBD8] italic">Where intuition meets intelligence.</span>
+          </p>
+        </div>
+
+        <div class="text-item opacity-40" data-text="3">
+          <h2 class="text-[#40CBD8] text-xl font-bold mb-4">Insight</h2>
+          <p class="text-white text-lg">
+            <span class="text-[#40CBD8] italic">Where awareness becomes evolution.</span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT : ZIG-ZAG SCROLL (NORMAL FLOW) -->
+    <div class="w-1/2 flex flex-col gap-48">
+
+      <!-- STEP 01 -->
+      <div class="step-image self-end" data-step="0">
+        <!-- IMAGE 01 BLOCK -->
+      </div>
+
+      <!-- STEP 02 -->
+      <div class="step-image self-start ml-24" data-step="1">
+        <!-- IMAGE 02 BLOCK -->
+      </div>
+
+      <!-- STEP 03 -->
+      <div class="step-image self-end" data-step="2">
+        <!-- IMAGE 03 BLOCK -->
+      </div>
+
+      <!-- STEP 04 -->
+      <div class="step-image self-start ml-24" data-step="3">
+        <!-- IMAGE 04 BLOCK -->
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
