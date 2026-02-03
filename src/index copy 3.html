@@ -1,3 +1,5 @@
+//Make copy in morning after removing extra classes, rest code is same scroll is on the full container
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,12 +29,12 @@
     <script src="./js/script.js" defer></script>
   </head>
 
-  <body class="min-h-screen overflow-hidden bg-app-gradient">
+  <body class="min-h-screen overflow-x-hidden bg-app-gradient">
     <!-- GLOBAL HEADER -->
     <header
       class="w-full fixed top-0 left-0 z-50 bg-header-gradient backdrop-blur-[10px]"
     >
-      <div class="max-w-[90%] sm:max-w-[85%] mx-auto py-3 sm:py-4">
+      <div class="max-w-[90%] sm:max-w-[85%] mx-auto py-3 md:py-4">
         <div class="flex items-center justify-between">
           <!-- Brand / Logo -->
           <div class="flex items-center gap-3 sm:gap-4">
@@ -103,10 +105,10 @@
       </div>
     </header>
 
-    <main id="scrollContainer" class="relative scroll-container w-full">
+    <main id="scrollContainer" class="relative w-full">
       <!-- Hero Section -->
       <section
-        class="w-full relative flex flex-col min-h-screen pt-8 sm:pt-18 md:pt-24 scroll-section"
+        class="relative flex flex-col items-center justify-center w-full min-h-screen pt-24 scroll-section md:pt-28"
       >
         <!-- Inline svg -->
         <svg
@@ -178,18 +180,17 @@
           </defs>
         </svg>
 
-        <div class="relative w-[90%] sm:w-[85%] mx-auto py-15">
-          <div
-            class="grid items-start grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-2"
-          >
-            <!-- <div class="flex justify-between"> -->
+        <div class="relative w-[90%] sm:w-[85%] mx-auto">
+          <div class="flex flex-col justify-between gap-10 md:flex-row">
             <!-- LEFT CONTENT -->
-            <div class="text-white pt-6 font-inter">
+            <div class="text-white font-inter">
               <span
-                class="inline-block rounded-full text-2xl bg-[#EFB20C] px-10 py-2 mb-8 font-semibold"
+                class="inline-block rounded-full text-xl sm:text-2xl bg-[#EFB20C] px-10 py-2 mb-8 font-semibold"
                 >The Genesis</span
               >
-              <p class="max-w-2xl text-2xl font-light text-white/85">
+              <p
+                class="w-full text-lg font-light leading-snug sm:max-w-2xl sm:text-xl md:text-2xl text-white/85"
+              >
                 My Ultimate Swing wasn't created in a boardroom; it was forged
                 on the fairway. We realized that every golfer possesses a unique
                 signature style, yet the physics of a great shot remain
@@ -207,24 +208,19 @@
             </div>
 
             <!-- RIGHT IMAGE -->
-            <div class="flex justify-center pt-6 parallax-img md:justify-end">
-              <div class="overflow-hidden shadow-2xl rounded-2xl">
+            <div class="flex justify-center md:justify-end">
+              <div
+                class="w-full h-auto overflow-hidden shadow-2xl rounded-2xl md:h-145 md:w-auto"
+              >
                 <img
                   src="./images/Golfer_swing.svg"
                   alt="Golfer swing"
-                  class="h-130 w-[320px] object-cover lg:h-140 lg:w-115"
+                  class="object-cover w-full h-full"
                 />
               </div>
             </div>
           </div>
         </div>
-
-        <!-- scroll indicator -->
-        <!-- <div
-          class="absolute text-sm -translate-x-1/2 pointer-events-none bottom-6 left-1/2 text-white/40 animate-bounce"
-        >
-          Scroll ↓
-        </div> -->
       </section>
 
       <!-- Main Content -->
@@ -328,7 +324,9 @@
           </div>
 
           <!-- Right-Scroll-Wrapper -->
-          <div class="relative w-full min-h-390 right-scroll-wrapper">
+          <div
+            class="relative flex flex-col w-full min-h-390 right-scroll-wrapper"
+          >
             <!-- SVG Dotted Connector -->
             <svg
               id="connectorSvg"
@@ -338,7 +336,7 @@
 
             <!-- IMAGE 01 -->
             <div
-              class="absolute flex gap-0 step-image active top-0 right-0"
+              class="absolute top-0 right-0 flex gap-0 step-image active"
               data-step="0"
               data-anchor
             >
@@ -350,13 +348,13 @@
                   <img
                     src="./images/Image01.svg"
                     alt="Image01"
-                    class="object-cover w-full h-full"
+                    class="object-cover w-full h-full low-opacity"
                   />
                 </div>
               </div>
               <!-- RIGHT PANEL -->
               <div
-                class="bg-linear-to-b from-[#FDCB1D] to-[#E79103] flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-r-2xl"
+                class="bg-linear-to-b from-[#FDCB1D] to-[#E79103] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-r-2xl"
               >
                 <span class="text-6xl font-bold text-white">01</span>
                 <p
@@ -375,7 +373,7 @@
             >
               <!-- LEFT PANEL -->
               <div
-                class="bg-linear-to-b from-[#EB59B2] to-[#B7217D] flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-l-2xl"
+                class="bg-linear-to-b from-[#EB59B2] to-[#B7217D] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-l-2xl"
               >
                 <span class="text-6xl font-bold text-white">02</span>
                 <p
@@ -385,20 +383,20 @@
                 </p>
               </div>
 
+              <!-- RIGHT IMAGE -->
               <div
                 class="flex overflow-hidden border-4 border-l-0 border-white rounded-r-2xl group image-wrapper"
               >
-                <!-- RIGHT IMAGE -->
                 <div class="relative flex gap-0 overflow-hidden h-60 w-80">
                   <img
                     src="./images/Image02.svg"
                     alt="Image02"
-                    class="w-full h-full"
+                    class="w-full h-full low-opacity"
                   />
                   <img
                     src="./images/Image02.svg"
                     alt="Image02"
-                    class="w-full h-full"
+                    class="w-full h-full low-opacity"
                   />
                 </div>
               </div>
@@ -410,21 +408,21 @@
               data-step="2"
               data-anchor
             >
+              <!-- LEFT IMAGE -->
               <div
                 class="flex overflow-hidden border-4 border-r-0 border-white rounded-l-2xl group image-wrapper"
               >
-                <!-- LEFT IMAGE -->
                 <div class="relative overflow-hidden h-60 w-80">
                   <img
                     src="./images/Image03.svg"
                     alt="Image03"
-                    class="object-cover w-full h-full"
+                    class="object-cover w-full h-full low-opacity"
                   />
                 </div>
               </div>
               <!-- RIGHT PANEL -->
               <div
-                class="bg-linear-to-b from-[#A576C7] to-[#68408C] flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-r-2xl"
+                class="bg-linear-to-b from-[#A576C7] to-[#68408C] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-r-2xl"
               >
                 <span class="text-6xl font-bold text-white">03</span>
                 <p
@@ -443,7 +441,7 @@
             >
               <!-- LEFT PANEL -->
               <div
-                class="bg-linear-to-b from-[#5DD7F2] to-[#1C9EBB] flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-l-2xl"
+                class="bg-linear-to-b from-[#5DD7F2] to-[#1C9EBB] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-l-2xl"
               >
                 <span class="text-6xl font-bold text-white">04</span>
                 <p
@@ -453,60 +451,65 @@
                 </p>
               </div>
 
+              <!-- RIGHT IMAGE -->
               <div
                 class="flex overflow-hidden border-4 border-l-0 border-white rounded-r-2xl group image-wrapper"
               >
-                <!-- RIGHT IMAGE -->
                 <div class="relative flex gap-0 overflow-hidden h-60 w-80">
                   <div class="flex items-center justify-center w-[120px]">
                     <img
                       src="./images/Image04.svg"
                       alt="Insight icon"
-                      class="h-[140px] w-auto"
+                      class="h-[140px] w-auto low-opacity"
                     />
                   </div>
                   <div class="flex flex-col justify-between flex-1 px-2 py-2">
                     <img
                       src="./images/Modal01.svg"
                       alt="Image04"
-                      class="h-[80px] w-full object-contain"
+                      class="h-[80px] w-full object-contain low-opacity"
                     />
                     <img
                       src="./images/Modal01.svg"
                       alt="Image04"
-                      class="h-[80px] w-full object-contain"
+                      class="h-[80px] w-full object-contain low-opacity"
                     />
                     <img
                       src="./images/Modal01.svg"
                       alt="Image04"
-                      class="h-[80px] w-full object-contain"
+                      class="h-[80px] w-full object-contain low-opacity"
                     />
                     <img
                       src="./images/Modal01.svg"
                       alt="Image04"
-                      class="h-[80px] w-full object-contain"
+                      class="h-[80px] w-full object-contain low-opacity"
                     />
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          
         </div>
       </section>
 
       <!-- Key Features + Footer -->
       <section
-        class="relative flex flex-col min-h-screen gap-10 pt-30 scroll-section"
+        class="relative flex flex-col w-full min-h-screen gap-6 pt-24 scroll-section md:pt-28"
       >
-        <div class="relative max-w-[90%] md:max-w-[85%] mx-auto flex gap-40">
+        <div
+          class="relative max-w-[90%] md:max-w-[85%] mx-auto flex flex-col md:flex-row gap-10"
+        >
           <!-- Left side -->
-          <div class="flex flex-col w-1/2 gap-6">
+          <div class="flex flex-col w-1/2 gap-4">
             <h3
-              class="text-3xl font-bold bg-linear-to-b from-[#FDCB1D] to-[#E79103] bg-clip-text text-transparent uppercase font-montserrat"
+              class="text-2xl md:text-3xl font-bold bg-linear-to-b from-[#FDCB1D] to-[#E79103] bg-clip-text text-transparent uppercase font-montserrat"
             >
               Key Features
             </h3>
-            <p class="text-[#FFFFFFCC] font-['Inter'] text-lg">
+            <p
+              class="text-[#FFFFFFCC] font-['Inter'] max-w-xl text-xl leading-tight"
+            >
               Improvement begins with clarity. My Ultimate Swing transforms
               movement into understanding, giving you a deeper connection to
               your swing and a stronger relationship with your craft. It is
@@ -515,79 +518,104 @@
               harder. It is about refining with precision, practicing with
               meaning, and shaping progress through insight. Here, technology
               serves the art of improvement, turning complexity into direction
-              and effort into evolution.My Ultimate Swing supports the
-              disciplined pursuit of better. Every motion recorded, every
-              comparison made, and every insight revealed is part of a process
-              that honors patience, mastery, and personal growth.Because
-              improvement is not a moment. It is a journey.
+              and effort into evolution.<br />
+              Ultimate Swing supports the disciplined pursuit of better. Every
+              motion recorded, every comparison made, and every insight revealed
+              is part of a process that honors patience, mastery, and personal
+              growth.Because improvement is not a moment. It is a journey.
             </p>
           </div>
 
           <!-- Right side -->
           <div class="w-1/2">
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <!-- Card -->
+            <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+              <!-- Card 1 -->
               <div
-                class="relative rounded-2xl px-6 py-4 border border-white bg-[#28214d]"
+                class="relative rounded-2xl px-6 pt-4 pb-2 border border-white bg-[#28214d]"
               >
                 <img
                   src="./images/icons/video_cmparison.svg"
                   alt="Video Comparison"
                   class="w-20"
                 />
-                <h4 class="text-[#40CBD8] text-lg font-semibold uppercase">
+                <h4
+                  class="text-[#40CBD8] text-lg leading-tight tracking-wide mb-1 font-semibold uppercase"
+                >
                   Video Comparison
                 </h4>
-                <p class="text-sm text-white">
+                <p
+                  class="text-sm text-white leading-[1.2] tracking-wider text-left"
+                >
                   Place your present beside your Ultimate. See subtle
                   differences, reveal hidden patterns, and let contrast guide
                   refinement.
                 </p>
               </div>
+
+              <!-- Card 2 -->
               <div
-                class="relative rounded-2xl px-6 py-4 border border-white bg-[#28214d]"
+                class="relative rounded-2xl px-6 pt-4 pb-2 border border-white bg-[#28214d]"
               >
                 <img
                   src="./images/icons/progress_tracking.png"
                   alt="Progress tracking"
                   class="w-20"
                 />
-                <h4 class="text-[#40CBD8] text-lg uppercase font-semibold">
+                <h4
+                  class="text-[#40CBD8] text-lg leading-tight tracking-wide mb-1 uppercase font-semibold"
+                >
                   Progress tracking
                 </h4>
-                <p class="text-sm text-white">
+                <p
+                  class="text-sm text-white leading-[1.2] text-left tracking-wider pr-5"
+                >
                   Progress is a journey, not a moment. Track your evolution over
                   time and watch intention turn into measurable growth.
                 </p>
               </div>
+
+              <!-- Card 3 -->
               <div
-                class="relative rounded-2xl px-6 py-4 border border-white bg-[#28214d]"
+                class="relative rounded-2xl px-6 pt-4 pb-2 border border-white bg-[#28214d]"
               >
                 <img
                   src="./images/icons/swing_library.png"
                   alt="Swing Library"
                   class="w-20"
                 />
-                <h4 class="text-[#40CBD8] text-lg font-semibold uppercase">
+                <h4
+                  class="text-[#40CBD8] text-lg leading-tight tracking-wide mb-1 font-semibold uppercase"
+                >
                   Swing Library
                 </h4>
-                <p class="text-sm text-white">
-                  Your swing is your signature. Build a personal archive of
-                  movement, discovery, and refinement.
+                <!-- <div class="bg-red-300"> -->
+                <p
+                  class="text-sm text-white leading-[1.2] tracking-wider text-left pr-5"
+                >
+                  Your swing is your signature. <br />
+                  Build a personal archive of movement, discovery, and
+                  refinement.
                 </p>
+                <!-- </div> -->
               </div>
+
+              <!-- Card 4 -->
               <div
-                class="relative rounded-2xl px-6 py-4 border border-white bg-[#28214d]"
+                class="relative rounded-2xl px-6 pt-4 pb-2 border border-white bg-[#28214d]"
               >
                 <img
                   src="./images/icons/easy_to_use.png"
                   alt="Easy to use"
                   class="w-20"
                 />
-                <h4 class="text-[#40CBD8] text-lg font-semibold uppercase">
+                <h4
+                  class="text-[#40CBD8] text-lg leading-tight tracking-wide mb-1 font-semibold uppercase"
+                >
                   Easy to use
                 </h4>
-                <p class="text-sm text-white">
+                <p
+                  class="text-sm text-white leading-[1.2] tracking-wider text-left"
+                >
                   Refinement should feel effortless.Designed to disappear into
                   your process so your focus stays on your craft.
                 </p>
@@ -597,25 +625,25 @@
         </div>
 
         <!-- Footer -->
-        <footer class="relative flex flex-col w-full gap-10">
+        <footer class="relative flex flex-col w-full gap-8 mt-auto">
           <div class="w-full bg-[#292653] border-[#3a3770] border-2">
-            <div class="max-w-6xl px-6 py-8 mx-auto text-center">
-              <p class="text-[#FFC300] text-2xl sm:text-3xl font-semibold">
+            <div class="max-w-4xl px-6 py-6 mx-auto text-center">
+              <p class="text-[#FFC300] text-xl sm:text-2xl font-semibold">
                 Ready to perfect your swing?
               </p>
               <p
-                class="max-w-xl px-10 mx-auto mt-4 text-base leading-tight text-white/70 sm:text-lg"
+                class="max-w-lg px-10 mx-auto mt-1 text-base leading-tight text-white/70"
               >
                 Join thousands of golfers who are improving their game with My
                 Ultimate Swing
               </p>
               <!-- Buttons -->
               <div
-                class="flex flex-col items-center justify-center gap-4 mt-10 sm:flex-row"
+                class="flex flex-col items-center justify-center gap-4 mt-6 sm:flex-row"
               >
                 <!-- iOS Button -->
                 <button
-                  class="flex items-center justify-center gap-2 w-55 px-6 py-3 text-black transition bg-white rounded-full shadow-lg hover:scale-105"
+                  class="flex items-center justify-center gap-2 px-6 py-3 text-black transition bg-white rounded-full shadow-lg w-55 hover:scale-105"
                 >
                   <img src="./images/icons/apple_icon.svg" alt="IOS Icon" />
                   <span class="text-sm font-bold text-black"
@@ -650,66 +678,3 @@
     </main>
   </body>
 </html>
-
-<div class="relative rounded-2xl px-6 pt-4 pb-4 border border-white bg-[#28214d] flex flex-col">
-
-
-js:
-// const steps = document.querySelectorAll(".scroll-step");
-// const textItems = document.querySelectorAll(".text-item");
-
-// const observer = new IntersectionObserver(
-//   (entries) => {
-//     entries.forEach(entry => {
-//       if (entry.isIntersecting) {
-//         const index = Number(entry.target.dataset.step);
-
-//         textItems.forEach((item, i) => {
-//           item.classList.toggle("active", i === index);
-//         });
-
-//         steps.forEach((step, i) => {
-//           step.classList.toggle("active", i === index);
-//         });
-//       }
-//     });
-//   },
-//   {
-//     threshold: 0.6
-//   }
-// );
-
-// steps.forEach(step => observer.observe(step));
-
-document.addEventListener("DOMContentLoaded", () => {
-  const steps = document.querySelectorAll(".step-image");
-  const texts = document.querySelectorAll(".text-item");
-
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const index = Number(entry.target.dataset.step);
-
-          steps.forEach((step, i) => {
-            step.classList.toggle("active", i === index);
-            step.style.opacity = i === index ? "1" : "0.35";
-            step.style.transform =
-              i === index ? "scale(1)" : "scale(0.92)";
-          });
-
-          texts.forEach((txt, i) => {
-            txt.classList.toggle("opacity-40", i !== index);
-          });
-        }
-      });
-    },
-    {
-      threshold: 0.55
-    }
-  );
-
-  steps.forEach(step => observer.observe(step));
-});
-
-

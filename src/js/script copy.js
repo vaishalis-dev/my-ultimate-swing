@@ -2,10 +2,6 @@ const scrollContainer = document.getElementById("scrollContainer");
 const steps = [...document.querySelectorAll(".step-image")];
 const texts = [...document.querySelectorAll(".text-item")];
 
-const svg = document.getElementById("connectorSvg");
-const anchors = [...document.querySelectorAll("[data-anchor]")];
-const wrapper = document.querySelector(".right-scroll-wrapper");
-
 let activeIndex = 0;
 
 function setActiveText(index) {
@@ -59,6 +55,12 @@ function onScroll() {
   setActiveText(closestIndex);
 }
 
+scrollContainer.addEventListener("scroll", onScroll, { passive: true });
+
+const svg = document.getElementById("connectorSvg");
+const anchors = [...document.querySelectorAll("[data-anchor]")];
+const wrapper = document.querySelector(".right-scroll-wrapper");
+
 function drawConnectors() {
   svg.innerHTML = "";
 
@@ -84,7 +86,7 @@ function drawConnectors() {
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute(
       "d",
-      `M ${x1} ${y1} C ${cx} ${y1}, ${cx} ${y2}, ${x2} ${y2}`
+      `M ${x1} ${y1} C ${cx} ${y1}, ${cx} ${y2}, ${x2} ${y2}`,
     );
 
     path.setAttribute("fill", "none");
@@ -100,8 +102,6 @@ function drawConnectors() {
     svg.appendChild(path);
   });
 }
-
-scrollContainer.addEventListener("scroll", onScroll, { passive: true });
 
 // Initial draw
 drawConnectors();

@@ -1,16 +1,10 @@
-const scrollContainer = document.getElementById("scrollContainer");
-const steps = [...document.querySelectorAll(".step-image")];
+const rightScrollContainer = document.getElementById("scrollContainer");
+const steps = [...rightScrollContainer.querySelectorAll(".step-image")];
 const texts = [...document.querySelectorAll(".text-item")];
-
-const svg = document.getElementById("connectorSvg");
-const anchors = [...document.querySelectorAll("[data-anchor]")];
-const wrapper = document.querySelector(".right-scroll-wrapper");
 
 let activeIndex = 0;
 
 function setActiveText(index) {
-  // if (index === activeIndex) return;
-
   texts.forEach((text, i) => {
     text.classList.remove("active", "prev", "next");
 
@@ -38,8 +32,8 @@ function setActiveText(index) {
   activeIndex = index;
 }
 
-function onScroll() {
-  const containerRect = scrollContainer.getBoundingClientRect();
+function onRightScroll() {
+  const containerRect = rightScrollContainer.getBoundingClientRect();
   const containerCenter = containerRect.top + containerRect.height / 2;
 
   let closestIndex = 0;
@@ -48,6 +42,7 @@ function onScroll() {
   steps.forEach((step, index) => {
     const rect = step.getBoundingClientRect();
     const stepCenter = rect.top + rect.height / 2;
+
     const distance = Math.abs(stepCenter - containerCenter);
 
     if (distance < minDistance) {
@@ -56,56 +51,61 @@ function onScroll() {
     }
   });
 
-  setActiveText(closestIndex);
+  if (closestIndex !== activeIndex) {
+    setActiveText(closestIndex);
+  }
 }
 
-function drawConnectors() {
-  svg.innerHTML = "";
+// Listen ONLY to right container scroll
+rightScrollContainer.addEventListener("scroll", onRightScroll, {
+  passive: true,
+});
 
-  const wrapperRect = wrapper.getBoundingClientRect();
+// Initial state when entering section
+setActiveText(0);
 
-  anchors.forEach((current, i) => {
-    const next = anchors[i + 1];
-    if (!next) return;
+const leftSticky = document.getElementById("left-sticky-wrapper");
+const rightScroll = document.getElementById("right-scroll-container");
+const firstStep = rightScroll.querySelector("[data-anchor]");
 
-    const r1 = current.getBoundingClientRect();
-    const r2 = next.getBoundingClientRect();
+function setRightPadding() {
+  const viewportHeight = window.innerHeight;
+  const stepHeight = firstStep.offsetHeight;
 
-    // Convert viewport coords → wrapper coords
-    const x1 = r1.left + r1.width / 2 - wrapperRect.left;
-    const y1 = r1.top + r1.height / 2 - wrapperRect.top;
+  const paddingY = viewportHeight / 2 - stepHeight / 2;
 
-    const x2 = r2.left + r2.width / 2 - wrapperRect.left;
-    const y2 = r2.top + r2.height / 2 - wrapperRect.top;
+  rightScroll.style.paddingTop = `${paddingY}px`;
+  // rightScroll.style.paddingBottom = `${paddingY + vh / 2}px`;
+  rightScroll.style.paddingBottom = `${paddingY}px`;
 
-    // Smooth curve
-    const cx = (x1 + x2) / 2;
+  const leftHeight = leftSticky.offsetHeight;
+  const top = viewportHeight / 2 - leftHeight / 2;
 
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute(
-      "d",
-      `M ${x1} ${y1} C ${cx} ${y1}, ${cx} ${y2}, ${x2} ${y2}`
-    );
-
-    path.setAttribute("fill", "none");
-    path.setAttribute("stroke-width", "3");
-    path.setAttribute("stroke-dasharray", "8 10");
-    path.setAttribute("stroke-linecap", "round");
-    path.setAttribute("opacity", "0.9");
-
-    // Color per step
-    const colors = ["#F5C542", "#E54C9A", "#7C6BFF"];
-    path.setAttribute("stroke", colors[i] || "#fff");
-
-    svg.appendChild(path);
-  });
+  leftSticky.style.top = `${top}px`;
 }
 
-scrollContainer.addEventListener("scroll", onScroll, { passive: true });
+// function setRightPadding() {
+//   const vh = window.innerHeight;
+//   const stepHeight = firstStep.offsetHeight;
 
-// Initial draw
-drawConnectors();
+//   // Center step
+//   const centerPadding = vh / 2 - stepHeight / 2;
 
-// Recalculate on scroll + resize
-window.addEventListener("scroll", drawConnectors);
-window.addEventListener("resize", drawConnectors);
+//   // Apply to right scroll
+//   rightScroll.style.paddingTop = `${centerPadding}px`;
+
+//   // IMPORTANT PART 👇
+//   // Give last image time before snap
+//   rightScroll.style.paddingBottom = `${centerPadding + vh / 2}px`;
+
+//   // Left stays centered
+//   const leftHeight = leftSticky.offsetHeight;
+//   leftSticky.style.top = `${vh / 2 - leftHeight / 2}px`;
+// }
+
+
+// initial
+setRightPadding();
+
+// on resize
+window.addEventListener("resize", setRightPadding);
