@@ -1,0 +1,7 @@
+Give me the prompt of what I said
+ i want to buid a website project which is build using html,tailwind css and js in which it contains the 3 sections
+
+ on the three sections apply the parallax effect, that ek section pr agr scroll kare to next section pr snap hojaye smoothly
+ then 1st and 3rd section are quite simple having simple content
+ but the 2nd section contains the four images and If i 
+
