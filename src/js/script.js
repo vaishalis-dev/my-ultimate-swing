@@ -99,14 +99,14 @@ function onScroll() {
   setActiveText(closestIndex);
 }
 
-// scrollContainer.addEventListener("scroll", onScroll, { passive: true });
-let ticking = false;
-scrollContainer.addEventListener("scroll", () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      onScroll();
-      ticking = false;
-    });
-    ticking = true;
-  }
-});
+scrollContainer.addEventListener("scroll", onScroll, { passive: true });
+// let ticking = false;
+// scrollContainer.addEventListener("scroll", () => {
+//   if (!ticking) {
+//     requestAnimationFrame(() => {
+//       onScroll();
+//       ticking = false;
+//     });
+//     ticking = true;
+//   }
+// });
