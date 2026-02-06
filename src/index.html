@@ -24,86 +24,86 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./output.css" />
-    <script src="./js/script.js" defer></script>
+    <!-- <script src="./js/script.js" defer></script> -->
   </head>
 
-  <body class="min-h-screen overflow-x-hidden bg-app-gradient">
-    <!-- GLOBAL HEADER -->
-    <header
-      class="w-full fixed top-0 left-0 z-50 bg-header-gradient backdrop-blur-[10px]"
-    >
-      <div class="max-w-[90%] sm:max-w-[85%] mx-auto py-3 md:py-4">
-        <div class="flex items-center justify-between">
-          <!-- Brand / Logo -->
-          <div class="flex items-center gap-3 sm:gap-4">
-            <div
-              class="flex items-center justify-center w-10 h-10 rounded-lg sm:h-12 sm:w-12 bg-white/80 backdrop-blur-md"
-            >
-              <a href="/" aria-label="My Ultimate Swing Home">
-                <img
-                  src="./images/logo.svg"
-                  alt="My Ultimate Swing logo"
-                  class="w-full h-full"
-                />
-              </a>
-            </div>
-
-            <div class="flex flex-col">
-              <h1
-                class="font-grotesk text-lg sm:text-2xl md:text-3xl font-medium text-white tracking-[-0.37px] leading-none"
-              >
-                MY ULTIMATE SWING
-              </h1>
-              <span
-                class="font-spartan text-sm sm:text-lg tracking-[-0.37px] text-[#40cbd8] leading-tight"
-              >
-                Every great swing is personal!
-              </span>
-            </div>
-          </div>
-
-          <!-- App Download Stats -->
-          <div class="flex items-center gap-4 sm:gap-6 md:gap-8">
-            <span
-              class="h-8 sm:h-9 w-[1.5px] bg-white/35"
-              aria-hidden="true"
-            ></span>
-
-            <div
-              class="flex items-center sm:gap-1"
-              role="group"
-              aria-label="App downloads"
-            >
+  <body class="bg-app-gradient">
+    <div id="main-scroll-container" class="w-full">
+      <!-- GLOBAL HEADER -->
+      <header
+        class="w-full fixed top-0 left-0 z-50 bg-header-gradient backdrop-blur-[10px]"
+      >
+        <div class="max-w-[90%] sm:max-w-[85%] mx-auto px-2 py-3 md:py-4">
+          <div class="flex items-center justify-between">
+            <!-- Brand / Logo -->
+            <div class="flex items-center gap-3 sm:gap-4">
               <div
-                class="flex items-center justify-center w-8 h-8 sm:h-10 sm:w-10"
+                class="flex items-center justify-center w-10 h-10 rounded-lg sm:h-12 sm:w-12 bg-white/80 backdrop-blur-md"
               >
-                <img
-                  src="./images/icons/down_arrow.svg"
-                  alt=""
-                  aria-hidden="true"
-                  class="w-full h-full"
-                />
+                <a href="/" aria-label="My Ultimate Swing Home">
+                  <img
+                    src="./images/logo.svg"
+                    alt="My Ultimate Swing logo"
+                    class="w-full h-full"
+                  />
+                </a>
               </div>
 
-              <div class="flex flex-col font-montserrat">
-                <span
-                  class="text-2xl sm:text-3xl font-bold leading-none tracking-[-0.2px] text-[#40cbd8]"
+              <div class="flex flex-col">
+                <h1
+                  class="font-grotesk text-lg sm:text-2xl md:text-3xl font-medium text-white tracking-[-0.37px] leading-none"
                 >
-                  10K+
-                </span>
+                  MY ULTIMATE SWING
+                </h1>
                 <span
-                  class="text-xs sm:text-sm font-semibold leading-none tracking-[-0.11px] text-white"
+                  class="font-spartan text-sm sm:text-lg tracking-[-0.37px] text-[#40cbd8] leading-tight"
                 >
-                  Download
+                  Every great swing is personal!
                 </span>
+              </div>
+            </div>
+
+            <!-- App Download Stats -->
+            <div class="flex items-center gap-4 sm:gap-6 md:gap-8">
+              <span
+                class="h-8 sm:h-9 w-[1.5px] bg-white/35"
+                aria-hidden="true"
+              ></span>
+
+              <div
+                class="flex items-center sm:gap-1"
+                role="group"
+                aria-label="App downloads"
+              >
+                <div
+                  class="flex items-center justify-center w-8 h-8 sm:h-10 sm:w-10"
+                >
+                  <img
+                    src="./images/icons/down_arrow.svg"
+                    alt=""
+                    aria-hidden="true"
+                    class="w-full h-full"
+                  />
+                </div>
+
+                <div class="flex flex-col font-montserrat">
+                  <span
+                    class="text-2xl sm:text-3xl font-bold leading-none tracking-[-0.2px] text-[#40cbd8]"
+                  >
+                    10K+
+                  </span>
+                  <span
+                    class="text-xs sm:text-sm font-semibold leading-none tracking-[-0.11px] text-white"
+                  >
+                    Download
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
-
-    <main id="scrollContainer" class="relative w-full">
+      </header>
+      
       <!-- Hero Section -->
       <section
         class="relative flex flex-col items-center justify-center w-full min-h-screen pt-24 hero-section scroll-section md:pt-28"
@@ -194,8 +194,10 @@
           </defs>
         </svg>
 
-        <div class="relative w-[90%] sm:w-[85%] mx-auto">
-          <div class="flex flex-col justify-between gap-4 sm:gap-8 md:gap-10 md:flex-row">
+        <div class="relative w-[90%] sm:w-[85%] px-2 mx-auto">
+          <div
+            class="flex flex-col justify-between gap-4 sm:gap-8 md:gap-10 md:flex-row"
+          >
             <!-- LEFT CONTENT -->
             <div class="text-white font-inter">
               <span
@@ -237,19 +239,14 @@
         </div>
       </section>
 
-      <!-- SECTION DIVIDER -->
-      <div
-        class="relative w-full h-[20vh] bg-transparent pointer-events-none divider"
-      ></div>
-
       <!-- Main Content -->
-      <section id="main-content" class="relative min-h-screen scroll-section">
-        <div
-          class="relative max-w-[90%] sm:max-w-[85%] gap-20 flex items-start mx-auto w-full h-full"
-        >
-          <!-- Left-Sticky-Wrapper -->
-          <div id="left-sticky-wrapper" class="sticky w-1/3 text-black">
-            <div class="grid w-full max-w-md place-items-center">
+      <section class="relative flex flex-col md:flex-row gap-10 w-[90%] sm:w-[85%] px-2 mx-auto section section2">
+        <!-- Left sticky Wrapper -->
+        <div class="w-full md:w-1/3 left-side-container">
+          <div
+            class="sticky top-0 flex flex-col items-center justify-center h-screen text-wrapper"
+          >
+            <div class="grid w-full max-w-md data-text place-items-center">
               <!-- Text 1: Record Swing -->
               <div class="text-item active" id="text-record">
                 <div class="flex items-center gap-6 mb-6">
@@ -340,198 +337,176 @@
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Right-Scroll-Wrapper -->
-          <div
-            id="right-scroll-container"
-            class="relative flex flex-col w-2/3 gap-y-20"
-          >
-            <!-- IMAGE 01 -->
-            <section
-              class="relative flex justify-end gap-0"
-              data-step="0"
-              data-anchor
-            >
-              <div class="flex step-image active">
-                <!-- LEFT IMAGE -->
-                <div
-                  class="flex border-4 border-r-0 border-white rounded-l-2xl group image-wrapper"
+        <!-- Right Scroll Wrapper -->
+        <div
+          class="relative flex flex-col w-full px-8 md:w-2/3 right-scroll-container gap-y-30"
+        >
+          <!-- IMAGE 01 -->
+          <div class="relative flex justify-end gap-0 image-container" data-anchor>
+            <div class="flex step-image active">
+              <!-- LEFT IMAGE -->
+              <div
+                class="flex border-4 border-r-0 border-white rounded-l-2xl group image-wrapper"
+              >
+                <div class="relative overflow-hidden h-60 w-80">
+                  <img
+                    src="./images/Image01.svg"
+                    alt="Image01"
+                    class="object-cover w-full h-full low-opacity"
+                  />
+                </div>
+              </div>
+              <!-- RIGHT PANEL -->
+              <div
+                class="bg-linear-to-b from-[#FDCB1D] to-[#E79103] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-r-2xl panel-border-opacity"
+              >
+                <span class="text-6xl font-bold text-white">01</span>
+                <p
+                  class="text-sm font-semibold tracking-wide text-white uppercase"
                 >
-                  <div class="relative overflow-hidden h-60 w-80">
+                  Record
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- IMAGE 02 -->
+          <div class="relative flex justify-start gap-0 image-container" data-anchor>
+            <div class="flex step-image">
+              <!-- LEFT PANEL -->
+              <div
+                class="bg-linear-to-b from-[#EB59B2] to-[#B7217D] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-l-2xl panel-border-opacity"
+              >
+                <span class="text-6xl font-bold text-white">02</span>
+                <p
+                  class="text-sm font-semibold tracking-wide text-white uppercase"
+                >
+                  Compare
+                </p>
+              </div>
+
+              <!-- RIGHT IMAGE -->
+              <div
+                class="flex overflow-hidden border-4 border-l-0 border-white rounded-r-2xl group image-wrapper"
+              >
+                <div class="relative flex gap-0 overflow-hidden h-60 w-80">
+                  <img
+                    src="./images/Image02.svg"
+                    alt="Image02"
+                    class="w-full h-full low-opacity"
+                  />
+                  <img
+                    src="./images/Image02.svg"
+                    alt="Image02"
+                    class="w-full h-full low-opacity"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="absolute right-60 bottom-20">
+              <img src="./images/yellow_connector.svg" alt="" />
+            </div>
+          </div>
+
+          <!-- IMAGE 03 -->
+          <div class="relative flex justify-end gap-0 image-container" data-anchor>
+            <div class="absolute right-60 bottom-20">
+              <img src="./images/pink_connector.svg" alt="" />
+            </div>
+            <div class="flex step-image">
+              <!-- LEFT IMAGE -->
+              <div
+                class="flex overflow-hidden border-4 border-r-0 border-white rounded-l-2xl group image-wrapper"
+              >
+                <div class="relative overflow-hidden h-60 w-80">
+                  <img
+                    src="./images/Image03.svg"
+                    alt="Image03"
+                    class="object-cover w-full h-full low-opacity"
+                  />
+                </div>
+              </div>
+              <!-- RIGHT PANEL -->
+              <div
+                class="bg-linear-to-b from-[#A576C7] to-[#68408C] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-r-2xl panel-border-opacity"
+              >
+                <span class="text-6xl font-bold text-white">03</span>
+                <p
+                  class="text-sm font-semibold tracking-wide text-white uppercase"
+                >
+                  Analyze
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- IMAGE 04 -->
+          <div class="relative flex justify-start gap-0 image-container" data-anchor>
+            <div class="flex step-image">
+              <!-- LEFT PANEL -->
+              <div
+                class="bg-linear-to-b from-[#5DD7F2] to-[#1C9EBB] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-l-2xl panel-border-opacity"
+              >
+                <span class="text-6xl font-bold text-white">04</span>
+                <p
+                  class="text-sm font-semibold tracking-wide text-white uppercase"
+                >
+                  Insight
+                </p>
+              </div>
+
+              <!-- RIGHT IMAGE -->
+              <div
+                class="flex overflow-hidden border-4 border-l-0 border-white rounded-r-2xl group image-wrapper"
+              >
+                <div class="relative flex gap-0 overflow-hidden h-60 w-80">
+                  <div class="flex items-center justify-center w-[120px]">
                     <img
-                      src="./images/Image01.svg"
-                      alt="Image01"
-                      class="object-cover w-full h-full low-opacity"
+                      src="./images/Image04.svg"
+                      alt="Insight icon"
+                      class="h-[140px] w-auto low-opacity"
+                    />
+                  </div>
+                  <div class="flex flex-col justify-between flex-1 px-2 py-2">
+                    <img
+                      src="./images/Modal01.svg"
+                      alt="Image04"
+                      class="h-[80px] w-full object-contain low-opacity"
+                    />
+                    <img
+                      src="./images/Modal01.svg"
+                      alt="Image04"
+                      class="h-[80px] w-full object-contain low-opacity"
+                    />
+                    <img
+                      src="./images/Modal01.svg"
+                      alt="Image04"
+                      class="h-[80px] w-full object-contain low-opacity"
+                    />
+                    <img
+                      src="./images/Modal01.svg"
+                      alt="Image04"
+                      class="h-[80px] w-full object-contain low-opacity"
                     />
                   </div>
                 </div>
-                <!-- RIGHT PANEL -->
-                <div
-                  class="bg-linear-to-b from-[#FDCB1D] to-[#E79103] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-r-2xl panel-border-opacity"
-                >
-                  <span class="text-6xl font-bold text-white">01</span>
-                  <p
-                    class="text-sm font-semibold tracking-wide text-white uppercase"
-                  >
-                    Record
-                  </p>
-                </div>
               </div>
-            </section>
-
-            <!-- IMAGE 02 -->
-            <section
-              class="relative flex justify-start gap-0"
-              data-step="0"
-              data-anchor
-            >
-              <div class="flex step-image active">
-                <!-- LEFT PANEL -->
-                <div
-                  class="bg-linear-to-b from-[#EB59B2] to-[#B7217D] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-l-2xl panel-border-opacity"
-                >
-                  <span class="text-6xl font-bold text-white">02</span>
-                  <p
-                    class="text-sm font-semibold tracking-wide text-white uppercase"
-                  >
-                    Compare
-                  </p>
-                </div>
-
-                <!-- RIGHT IMAGE -->
-                <div
-                  class="flex overflow-hidden border-4 border-l-0 border-white rounded-r-2xl group image-wrapper"
-                >
-                  <div class="relative flex gap-0 overflow-hidden h-60 w-80">
-                    <img
-                      src="./images/Image02.svg"
-                      alt="Image02"
-                      class="w-full h-full low-opacity"
-                    />
-                    <img
-                      src="./images/Image02.svg"
-                      alt="Image02"
-                      class="w-full h-full low-opacity"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="absolute right-60 bottom-20">
-                <img src="./images/yellow_connector.svg" alt="" />
-              </div>
-            </section>
-
-            <!-- IMAGE 03 -->
-            <section
-              class="relative flex justify-end gap-0"
-              data-step="0"
-              data-anchor
-            >
-              <div class="absolute right-60 bottom-20">
-                <img src="./images/pink_connector.svg" alt="" />
-              </div>
-              <div class="flex step-image active">
-                <!-- LEFT IMAGE -->
-                <div
-                  class="flex overflow-hidden border-4 border-r-0 border-white rounded-l-2xl group image-wrapper"
-                >
-                  <div class="relative overflow-hidden h-60 w-80">
-                    <img
-                      src="./images/Image03.svg"
-                      alt="Image03"
-                      class="object-cover w-full h-full low-opacity"
-                    />
-                  </div>
-                </div>
-                <!-- RIGHT PANEL -->
-                <div
-                  class="bg-linear-to-b from-[#A576C7] to-[#68408C] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-r-2xl panel-border-opacity"
-                >
-                  <span class="text-6xl font-bold text-white">03</span>
-                  <p
-                    class="text-sm font-semibold tracking-wide text-white uppercase"
-                  >
-                    Analyze
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <!-- IMAGE 04 -->
-            <section
-              class="relative flex justify-start gap-0"
-              data-step="0"
-              data-anchor
-            >
-              <div class="flex step-image active">
-                <!-- LEFT PANEL -->
-                <div
-                  class="bg-linear-to-b from-[#5DD7F2] to-[#1C9EBB] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-l-2xl panel-border-opacity"
-                >
-                  <span class="text-6xl font-bold text-white">04</span>
-                  <p
-                    class="text-sm font-semibold tracking-wide text-white uppercase"
-                  >
-                    Insight
-                  </p>
-                </div>
-
-                <!-- RIGHT IMAGE -->
-                <div
-                  class="flex overflow-hidden border-4 border-l-0 border-white rounded-r-2xl group image-wrapper"
-                >
-                  <div class="relative flex gap-0 overflow-hidden h-60 w-80">
-                    <div class="flex items-center justify-center w-[120px]">
-                      <img
-                        src="./images/Image04.svg"
-                        alt="Insight icon"
-                        class="h-[140px] w-auto low-opacity"
-                      />
-                    </div>
-                    <div class="flex flex-col justify-between flex-1 px-2 py-2">
-                      <img
-                        src="./images/Modal01.svg"
-                        alt="Image04"
-                        class="h-[80px] w-full object-contain low-opacity"
-                      />
-                      <img
-                        src="./images/Modal01.svg"
-                        alt="Image04"
-                        class="h-[80px] w-full object-contain low-opacity"
-                      />
-                      <img
-                        src="./images/Modal01.svg"
-                        alt="Image04"
-                        class="h-[80px] w-full object-contain low-opacity"
-                      />
-                      <img
-                        src="./images/Modal01.svg"
-                        alt="Image04"
-                        class="h-[80px] w-full object-contain low-opacity"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="absolute bottom-30 right-50">
-                <img src="./images/purple_connector.svg" alt="" />
-              </div>
-            </section>
+            </div>
+            <div class="absolute bottom-30 right-50">
+              <img src="./images/purple_connector.svg" alt="" />
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION DIVIDER -->
-      <div
-        class="relative w-full h-[30vh] bg-transparent pointer-events-none divider"
-      ></div>
-
-      <!-- Key Features + Footer -->
+     <!-- Key Features + Footer -->
       <section
-        class="relative flex flex-col w-full min-h-screen gap-6 pt-24 scroll-section md:pt-28"
+        class="relative flex flex-col w-full min-h-screen gap-6 pt-24 section md:pt-28"
       >
         <div
-          class="relative max-w-[90%] md:max-w-[85%] mx-auto flex flex-col md:flex-row gap-10"
+          class="relative max-w-[90%] md:max-w-[85%] px-2 mx-auto flex flex-col md:flex-row gap-10"
         >
           <!-- Left side -->
           <div class="flex flex-col w-full gap-4 md:w-1/2">
@@ -708,6 +683,14 @@
           </div>
         </section>
       </section>
-    </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/Observer.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script> -->
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script> -->
+    <script type="module" src="./js/script.js"></script>
   </body>
 </html>

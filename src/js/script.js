@@ -1,9 +1,174 @@
-const leftSticky = document.getElementById("left-sticky-wrapper");
-const rightScroll = document.getElementById("right-scroll-container");
-const firstStep = rightScroll.querySelector("[data-anchor]");
-const scrollContainer = document.getElementById("scrollContainer");
-const steps = [...document.querySelectorAll(".step-image")];
-const texts = [...document.querySelectorAll(".text-item")];
+gsap.registerPlugin(ScrollTrigger, Observer);
+
+const container = document.getElementById("main-scroll-container");
+const sections = gsap.utils.toArray(".section");
+
+const texts = gsap.utils.toArray(".left-side-container .text-wrapper .data-text .text-item");
+
+const scrollContainer = document.querySelector(".right-scroll-container");
+const images = gsap.utils.toArray(".right-scroll-container .step-image");
+
+const sectionHeight = window.innerHeight;
+const imageHeight = (window.innerHeight * 40) / 100;
+
+let currentSection = 0;
+let currentImage = 0;
+let isAnimating = false;
+
+let scrollLocked = false;
+const SCROLL_LOCK_TIME = 450; // ms (tweak 350–600)
+
+// ---------------- SECTION SCROLL ----------------
+
+function scrollToSection(index) {
+  if (isAnimating || scrollLocked) return;
+
+  isAnimating = true;
+  scrollLocked = true;
+
+  gsap.to(container, {
+    scrollTop: index * sectionHeight,
+    duration: 0.8,
+    ease: "power2.inOut",
+    onComplete: () => {
+      currentSection = index;
+      isAnimating = false;
+
+      // unlock AFTER momentum dies
+      setTimeout(() => {
+        scrollLocked = false;
+      }, SCROLL_LOCK_TIME);
+    },
+  });
+}
+
+// ---------------- IMAGE SCROLL ----------------
+
+function updateClasses(index) {
+  texts.forEach((text, i) => {
+    text.classList.remove("active", "prev", "next", "hidden");
+
+    if (i === index) {
+      text.classList.add("active");
+    } else if (i === index - 1) {
+      text.classList.add("prev");
+    } else if (i === index + 1) {
+      text.classList.add("next");
+    } else {
+      text.classList.add("hidden");
+    }
+  });
+
+  images.forEach((img, i) => {
+    img.classList.remove("active", "prev", "next");
+
+    if (i === index) {
+      img.classList.add("active");
+    } else if (i === index - 1) {
+      img.classList.add("prev");
+    } else if (i === index + 1) {
+      img.classList.add("next");
+    }
+  });
+}
+
+
+function scrollToImage(index) {
+  if (isAnimating || scrollLocked) return;
+
+  isAnimating = true;
+  scrollLocked = true;
+
+  //update classes on text and images
+  updateClasses(index);
+
+  // texts.forEach((text, i) => {
+  //   if (i === index) {
+  //     text.classList.add("active");
+  //     text.classList.remove("hidden");
+  //     gsap.fromTo(text, { opacity: 0, blur: "8px" }, { opacity: 1, blur: "0px", duration: 0.8, ease: "power2.inOut" });
+  //   } else {
+  //     text.classList.remove("active");
+  //     text.classList.add("hidden");
+  //   }
+  // });
+
+  images.forEach((img, i) => {
+    if (i === index) {
+      gsap.to(images[i], {
+        scale: 1.1,
+        duration: 0.6,
+        ease: "power2.inOut",
+      });
+    } else {
+      gsap.to(images[i], {
+        scale: 0.9,
+        duration: 0.2,
+        ease: "power2.inOut",
+      });
+    }
+  });
+
+  gsap.to(scrollContainer, {
+    scrollTop: index !== 3 ? index * imageHeight : index * imageHeight + imageHeight / 1.5,
+    duration: 0.6,
+    ease: "power2.inOut",
+    onComplete: () => {
+      currentImage = index;
+      isAnimating = false;
+
+      // critical for touchpads
+      setTimeout(() => {
+        scrollLocked = false;
+      }, SCROLL_LOCK_TIME);
+    },
+  });
+}
+
+// ---------------- OBSERVER ----------------
+
+Observer.create({
+  target: container,
+  type: "wheel,touch",
+  //tolerance: 30, // slightly higher
+  //wheelSpeed: 1.5, // dampen trackpads
+  preventDefault: true,
+
+  onDown() {
+    // IMAGE SECTION
+    if (currentSection === 1) {
+      if (currentImage < images.length - 1) {
+        scrollToImage(currentImage + 1);
+      } else {
+        scrollToSection(2);
+      }
+      return;
+    }
+
+    if (currentSection < sections.length - 1) {
+      scrollToSection(currentSection + 1);
+    }
+  },
+
+  onUp() {
+    // IMAGE SECTION
+    if (currentSection === 1) {
+      if (currentImage > 0) {
+        scrollToImage(currentImage - 1);
+      } else {
+        scrollToSection(0);
+      }
+      return;
+    }
+
+    if (currentSection > 0) {
+      scrollToSection(currentSection - 1);
+    }
+  },
+});
+
+
+const firstStep = scrollContainer.querySelector("[data-anchor]");
 
 function setRightPadding() {
   const vh = window.innerHeight;
@@ -11,102 +176,9 @@ function setRightPadding() {
 
   const centerPadding = vh / 2 - stepHeight / 2;
 
-  rightScroll.style.paddingTop = `${centerPadding}px`;
-  // rightScroll.style.paddingBottom = `${centerPadding}px`;
-  // rightScroll.style.paddingBottom = `${centerPadding + vh / 2}px`;
-
-  const leftHeight = leftSticky.getBoundingClientRect().height;
-  leftSticky.style.top = `${vh / 2 - leftHeight / 2}px`;
+  scrollContainer.style.paddingTop = `${centerPadding}px`;
+  scrollContainer.style.paddingBottom = `${centerPadding}px`;
 }
 
-// initial
-setRightPadding();
-
-// on resize
-// window.addEventListener("resize", setRightPadding);
-
-let resizeRAF;
-
-window.addEventListener("resize", () => {
-  if (resizeRAF) return;
-
-  resizeRAF = requestAnimationFrame(() => {
-    setRightPadding();
-    resizeRAF = null;
-  });
-});
-
-// function catchScroll() {
-//   console.log("scrolling......");
-//   const scrollTop = scrollContainer.scrollTop; // current scroll position
-//   const scrollHeight = scrollContainer.scrollHeight; // total scrollable height
-//   const clientHeight = scrollContainer.clientHeight; // visible height
-
-//   // console.log(scrollTop, scrollHeight, clientHeight);
-// }
-
-let activeIndex = 0;
-
-function setActiveText(index) {
-  // if (index === activeIndex) return;
-
-  texts.forEach((text, i) => {
-    text.classList.remove("active", "prev", "next");
-
-    if (i === index) {
-      text.classList.add("active");
-    } else if (i < index) {
-      text.classList.add("prev");
-    } else {
-      text.classList.add("next");
-    }
-  });
-
-  steps.forEach((step, i) => {
-    step.classList.remove("active", "prev", "next");
-
-    if (i === index) {
-      step.classList.add("active");
-    } else if (i < index) {
-      step.classList.add("prev");
-    } else {
-      step.classList.add("next");
-    }
-  });
-
-  activeIndex = index;
-}
-
-function onScroll() {
-  console.log("scrolling.....");
-  const containerRect = scrollContainer.getBoundingClientRect();
-  const containerCenter = containerRect.top + containerRect.height / 2;
-
-  let closestIndex = 0;
-  let minDistance = Infinity;
-
-  steps.forEach((step, index) => {
-    const rect = step.getBoundingClientRect();
-    const stepCenter = rect.top + rect.height / 2;
-    const distance = Math.abs(stepCenter - containerCenter);
-
-    if (distance < minDistance) {
-      minDistance = distance;
-      closestIndex = index;
-    }
-  });
-
-  setActiveText(closestIndex);
-}
-
-scrollContainer.addEventListener("scroll", onScroll, { passive: true });
-// let ticking = false;
-// scrollContainer.addEventListener("scroll", () => {
-//   if (!ticking) {
-//     requestAnimationFrame(() => {
-//       onScroll();
-//       ticking = false;
-//     });
-//     ticking = true;
-//   }
-// });
+window.addEventListener("load", setRightPadding);
+window.addEventListener("resize", setRightPadding);
