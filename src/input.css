@@ -118,3 +118,37 @@ body {
     -10px -10px 22px rgba(201, 120, 255, 0.25),
     10px 10px 26px rgba(0, 0, 0, 0.45);
 }
+
+/* Top blur (frosted glass) only on mobile */
+@media (max-width: 767px) {
+  .left-side-container {
+    height: fit-content;
+    z-index: 10;
+  
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  
+    /* TOP blur only */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 25%,
+      transparent 65%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 25%,
+      transparent 65%,
+      transparent 100%
+    );
+  
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+}
+
+/* backdrop-blur-md md:backdrop-blur-none bg-[linear-gradient(to_bottom,rgba(46,51,90,0.05),rgba(28,27,51,0.05))] md:bg-transparent w-full */
