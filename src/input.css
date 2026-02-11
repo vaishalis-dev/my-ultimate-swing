@@ -92,6 +92,7 @@ body {
 }
 
 .step-image.active {
+  width: clamp(300px, 32vw, 460px);
   opacity: 1;
   transform: scale(1.1);
   z-index: 5;
@@ -151,4 +152,10 @@ body {
   }
 }
 
-/* backdrop-blur-md md:backdrop-blur-none bg-[linear-gradient(to_bottom,rgba(46,51,90,0.05),rgba(28,27,51,0.05))] md:bg-transparent w-full */
+/* Touch: disable native scroll so only Observer + GSAP drive section-to-section scroll */
+@media (pointer: coarse) {
+  #main-scroll-container,
+  .right-scroll-container {
+    touch-action: none;
+  }
+}

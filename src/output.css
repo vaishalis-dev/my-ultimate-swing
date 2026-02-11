@@ -1114,6 +1114,10 @@
     --tw-blur: blur(8px);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
+  .invert {
+    --tw-invert: invert(100%);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
@@ -1607,6 +1611,11 @@
       padding-top: calc(var(--spacing) * 28);
     }
   }
+  .md\:pt-\[38vh\] {
+    @media (width >= 48rem) {
+      padding-top: 38vh;
+    }
+  }
   .md\:text-2xl {
     @media (width >= 48rem) {
       font-size: var(--text-2xl);
@@ -1702,6 +1711,7 @@ body {
   transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.6s ease, box-shadow 0.6s ease;
 }
 .step-image.active {
+  width: clamp(300px, 32vw, 460px);
   opacity: 1;
   transform: scale(1.1);
   z-index: 5;
@@ -1732,6 +1742,11 @@ body {
     mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
+  }
+}
+@media (pointer: coarse) {
+  #main-scroll-container, .right-scroll-container {
+    touch-action: none;
   }
 }
 @property --tw-rotate-x {

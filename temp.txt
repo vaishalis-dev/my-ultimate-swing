@@ -1,7 +1,207 @@
-Give me the prompt of what I said
- i want to buid a website project which is build using html,tailwind css and js in which it contains the 3 sections
+ <!-- Key Features + Footer -->
+      <section
+        class="relative flex flex-col w-full min-h-screen gap-2 sm:gap-6 pt-8 sm:pt-24 section md:pt-28"
+      >
+        <div
+          class="relative max-w-[95%] sm:max-w-[90%] md:max-w-[85%] px-2 mx-auto flex flex-col md:flex-row gap-6 sm:gap-10"
+        >
+          <!-- Left side -->
+          <div class="flex flex-col w-full gap-1 sm:gap-2 md:gap-4 md:w-1/2">
+            <h3
+              class="font-bold bg-linear-to-b from-[#FDCB1D] to-[#E79103] bg-clip-text text-transparent uppercase font-montserrat"
+              style="font-size: clamp(18px, 3vw, 32px)"
+            >
+              Key Features
+            </h3>
+            <p
+              class="text-[#FFFFFFCC] font-['Inter'] max-w-xl leading-snug"
+              style="font-size: clamp(10px, 1.5vw, 18px)"
+            >
+              Improvement begins with clarity. My Ultimate Swing transforms
+              movement into understanding, giving you a deeper connection to
+              your swing and a stronger relationship with your craft. It is
+              where intention meets awareness, and practice becomes
+              purposeful.This is not about chasing perfection or swinging
+              harder. It is about refining with precision, practicing with
+              meaning, and shaping progress through insight. Here, technology
+              serves the art of improvement, turning complexity into direction
+              and effort into evolution.My Ultimate Swing supports the
+              disciplined pursuit of better. Every motion recorded, every
+              comparison made, and every insight revealed is part of a process
+              that honors patience, mastery, and personal growth.Because
+              improvement is not a moment. It is a journey.
+            </p>
+          </div>
 
- on the three sections apply the parallax effect, that ek section pr agr scroll kare to next section pr snap hojaye smoothly
- then 1st and 3rd section are quite simple having simple content
- but the 2nd section contains the four images and If i 
+          <!-- Right side -->
+          <div class="w-full md:w-1/2">
+            <div class="grid grid-cols-2 gap-3">
+              <!-- Card 1 -->
+              <div
+                class="relative rounded-2xl px-3 pb-3 pt-3 sm:px-6 sm:pt-4 sm:pb-2 border border-white bg-[#28214d]"
+              >
+                <img
+                  src="./images/icons/video_comparison.png"
+                  class="rounded-full w-7 sm:w-15 icon-shadow bg-linear-to-b from-[#1c1535] to-[#634594] mb-2 md:mb-4"
+                />
 
+                <h4
+                  class="text-[#40CBD8] text-lg leading-tight tracking-wide mb-1 font-semibold uppercase"
+                  style="font-size: clamp(10px, 1.5vw, 20px)"
+                >
+                  Video Comparison
+                </h4>
+                <p
+                  class="text-sm text-white leading-[1.2] tracking-wider text-left"
+                  style="font-size: clamp(8px, 1.02vw, 18px)"
+                >
+                  Place your present beside your Ultimate. See subtle
+                  differences, reveal hidden patterns, and let contrast guide
+                  refinement.
+                </p>
+              </div>
+
+              <!-- Card 2 -->
+              <div
+                class="relative rounded-2xl px-3 pb-3 pt-3 sm:px-6 sm:pt-4 sm:pb-2 border border-white bg-[#28214d]"
+              >
+                <img
+                  src="./images/icons/progress_tracking.png"
+                  class="rounded-full w-7 sm:w-15 icon-shadow bg-linear-to-b from-[#1c1535] to-[#634594] mb-2 md:mb-4"
+                />
+                <h4
+                  class="text-[#40CBD8] text-lg leading-tight tracking-wide mb-1 uppercase font-semibold"
+                  style="font-size: clamp(10px, 1.5vw, 20px)"
+                >
+                  Progress tracking
+                </h4>
+                <p
+                  class="text-sm text-white leading-[1.2] text-left tracking-wider pr-5"
+                  style="font-size: clamp(8px, 1.02vw, 18px)"
+                >
+                  Progress is a journey, not a moment. Track your evolution over
+                  time and watch intention turn into measurable growth.
+                </p>
+              </div>
+
+              <!-- Card 3 -->
+              <div
+                class="relative rounded-2xl px-3 pb-3 pt-3 sm:px-6 sm:pt-4 sm:pb-2 border border-white bg-[#28214d]"
+              >
+                <img
+                  src="./images/icons/swing_library.png"
+                  class="rounded-full w-7 sm:w-15 icon-shadow bg-linear-to-b from-[#1c1535] to-[#634594] mb-2 md:mb-4"
+                />
+                <h4
+                  class="text-[#40CBD8] text-lg leading-tight tracking-wide mb-1 font-semibold uppercase"
+                  style="font-size: clamp(10px, 1.5vw, 20px)"
+                >
+                  Swing Library
+                </h4>
+                <!-- <div class="bg-red-300"> -->
+                <p
+                  class="text-sm text-white leading-[1.2] tracking-wider text-left pr-5"
+                  style="font-size: clamp(8px, 1.02vw, 18px)"
+                >
+                  Your swing is your signature. <br />
+                  Build a personal archive of movement, discovery, and
+                  refinement.
+                </p>
+                <!-- </div> -->
+              </div>
+
+              <!-- Card 4 -->
+              <div
+                class="relative rounded-2xl px-3 pb-3 pt-3 sm:px-6 sm:pt-4 sm:pb-2 border border-white bg-[#28214d]"
+              >
+                <img
+                  src="./images/icons/easy_to_use.png"
+                  class="rounded-full w-7 sm:w-15 icon-shadow bg-linear-to-b from-[#1c1535] to-[#634594] mb-2 md:mb-4"
+                />
+                <h4
+                  class="text-[#40CBD8] text-lg leading-tight tracking-wide mb-1 font-semibold uppercase"
+                  style="font-size: clamp(10px, 1.5vw, 20px)"
+                >
+                  Easy to use
+                </h4>
+                <p
+                  class="text-sm text-white leading-[1.2] tracking-wider text-left"
+                  style="font-size: clamp(8px, 1.02vw, 18px)"
+                >
+                  Refinement should feel effortless.Designed to disappear into
+                  your process so your focus stays on your craft.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="relative flex flex-col w-full gap-8 mt-10 sm:mt-auto">
+          <div class="w-full bg-[#292653] border-[#3a3770] border-2">
+            <div class="max-w-4xl px-6 py-6 mx-auto text-center">
+              <p
+                class="text-[#FFC300] text-xl sm:text-2xl font-semibold"
+                style="font-size: clamp(16px, 1.6vw, 30px)"
+              >
+                Ready to perfect your swing?
+              </p>
+              <p
+                class="max-w-lg px-10 mx-auto mt-1 text-base leading-tight text-white/70"
+                style="font-size: clamp(12px, 1.05vw, 18px)"
+              >
+                Join thousands of golfers who are improving their game with My
+                Ultimate Swing
+              </p>
+              <!-- Buttons -->
+              <div class="flex items-center justify-center gap-4 mt-6 flex-row">
+                <!-- iOS Button -->
+                <button
+                  class="flex items-center justify-center gap-2 sm:px-6 sm:py-3 px-3 py-2 text-black transition bg-white rounded-full shadow-lg w-55 hover:scale-105"
+                >
+                  <img src="./images/icons/apple_icon.svg" alt="IOS Icon" />
+                  <span
+                    class="text-sm font-bold text-black"
+                    style="font-size: clamp(8.5px, 1.02vw, 18px)"
+                    >Download on iOS</span
+                  >
+                </button>
+                <button
+                  class="bg-[#99CC00] justify-center gap-2 w-55 sm:px-6 sm:py-3 px-3 py-2 text-white transition hover:scale-8.55 shadow-lg rounded-full flex items-center"
+                >
+                  <img
+                    src="./images/icons/android_icon.svg"
+                    alt="Android Icon"
+                  />
+                  <span
+                    class="text-sm font-bold text-white"
+                    style="font-size: clamp(8.5px, 1.02vw, 18px)"
+                    >Download on Android</span
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#16162a] border-t border-white/70 w-full">
+            <div
+              class="max-w-[90%] sm:max-w-[85%] p-2 mx-auto flex items-center text-white/70 justify-between font-montserrat tracking-wide text-sm"
+            >
+              <p
+                class="font-semibold"
+                style="font-size: clamp(10px, 1.02vw, 18px)"
+              >
+                Terms of Service | Privacy Policy
+              </p>
+              <p
+                class="font-normal"
+                style="font-size: clamp(10px, 1.02vw, 18px)"
+              >
+                support@myultimateswing.com
+              </p>
+            </div>
+          </div>
+        </footer>
+      </section>
+
+
+      pt-[clamp(4.5rem,14vh,5.5rem)]
