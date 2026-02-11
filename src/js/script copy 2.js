@@ -20,14 +20,6 @@ let isAnimating = false;
 let scrollLocked = false;
 const SCROLL_LOCK_TIME = 250; // ms (tweak 350–600)
 
-const MD_BREAKPOINT = 768; // Tailwind md (≤768 = mobile)
-const MOBILE_SNAP_OFFSET_BELOW_CENTER = 0.12;
-const MOBILE_PADDING_OFFSET_RATIO = 0.12;
-
-function isMobile() {
-  return window.matchMedia(`(max-width: ${MD_BREAKPOINT}px)`).matches;
-}
-
 // ---------------- SECTION SCROLL ----------------
 
 function scrollToSection(index) {
@@ -190,24 +182,18 @@ function scrollToImage(index) {
   // Image center position inside scroll container
   const imageRect = targetImage.getBoundingClientRect();
   const containerRect = scrollContainer.getBoundingClientRect();
+
+  // current scroll
   const currentScroll = scrollContainer.scrollTop;
 
   // position of image center relative to container
   const imageCenter =
     imageRect.top - containerRect.top + currentScroll + imageRect.height / 2;
 
-  const clientHeight = scrollContainer.clientHeight;
-  const isMobileView = window.matchMedia(
-    `(max-width: ${MD_BREAKPOINT}px)`,
-  ).matches;
-
   // where the viewport center should be
-   // Desktop: snap to vertical center. Mobile: snap slightly below center.
-   const snapTargetY = isMobileView
-   ? clientHeight / 2 + clientHeight * MOBILE_SNAP_OFFSET_BELOW_CENTER
-   : clientHeight / 2;
+  const containerCenter = scrollContainer.clientHeight / 2;
 
- const finalScroll = imageCenter - snapTargetY;
+  const finalScroll = imageCenter - containerCenter;
 
   gsap.to(scrollContainer, {
     scrollTop: finalScroll,
@@ -262,6 +248,8 @@ Observer.create({
   },
 });
 
+
+const MD_BREAKPOINT = 768; // Tailwind md
 const firstStep = scrollContainer.querySelector("[data-anchor]");
 
 function setRightPadding() {
@@ -269,88 +257,19 @@ function setRightPadding() {
 
   // detect md screens
   const mdQuery = window.matchMedia(`(min-width: ${MD_BREAKPOINT}px)`);
-  const vh = window.innerHeight;
-  const stepHeight = firstStep.getBoundingClientRect().height;
-  const centerPadding = vh / 2 - stepHeight / 2;
-
-  if (mdQuery.matches) {
-    // Desktop: center the first image
-    scrollContainer.style.paddingTop = `${centerPadding}px`;
-    scrollContainer.style.paddingBottom = `${centerPadding}px`;
+  // If screen is SMALLER than md → remove padding
+  if (!mdQuery.matches) {
+    scrollContainer.style.paddingTop = "";
+    scrollContainer.style.paddingBottom = "";
     return;
   }
+  const vh = window.innerHeight;
+  const stepHeight = firstStep.getBoundingClientRect().height;
 
-  // Mobile: first image sits below center (same position as snap target)
-  // Image center = paddingTop + stepHeight/2 → we want that = vh/2 + offset
-  const offset = vh * MOBILE_PADDING_OFFSET_RATIO;
-  const paddingTop = centerPadding + offset;
-  const paddingBottom = centerPadding + offset;
-  scrollContainer.style.paddingTop = `${Math.max(0, paddingTop)}px`;
-  scrollContainer.style.paddingBottom = `${Math.max(0, paddingBottom)}px`;
+  const centerPadding = vh / 2 - stepHeight / 2;
+
+  scrollContainer.style.paddingTop = `${centerPadding}px`;
+  scrollContainer.style.paddingBottom = `${centerPadding}px`;
 }
-// window.addEventListener("load", setRightPadding);
-// window.addEventListener("resize", setRightPadding);
-
-// ------ BELOW CODE IS FOR CONNECTORS -----
-
-const LeaderLine = typeof window !== 'undefined' && (window.LeaderLine?.default ?? window.LeaderLine)
-const hasLeaderLine = typeof LeaderLine === 'function'
-let leaderLines = []
-
-const connectorColors = ['#FDCB1D', '#EB59B2', '#A576C7']
-
-function createLeaderLines () {
-  if (!hasLeaderLine) return
-  leaderLines.forEach(line => line.remove())
-  leaderLines = []
-
-  const imageContainers = document.querySelectorAll('.step-image')
-  for (let i = 0; i < imageContainers.length - 1; i++) {
-    const line = new LeaderLine(imageContainers[i], imageContainers[i + 1], {
-      color: connectorColors[i],
-      size: 3,
-      path: 'magnet',
-      startPlug: 'behind',
-      endPlug: 'behind',
-      startSocket: 'bottom',
-      endSocket: 'top',
-      dash: { len: 14, gap: 10, animation: true }
-    })
-    leaderLines.push(line)
-  }
-  positionLeaderLines()
-}
-
-function positionLeaderLines () {
-  if (!hasLeaderLine) return
-  leaderLines.forEach(line => line.position())
-}
-
-function initLeaderLines () {
-  setRightPadding()
-  if (!hasLeaderLine) return
-  createLeaderLines()
-  requestAnimationFrame(() => {
-    requestAnimationFrame(positionLeaderLines)
-  })
-}
-
-window.addEventListener('load', initLeaderLines)
-window.addEventListener('resize', () => {
-  setRightPadding()
-  positionLeaderLines()
-})
-requestAnimationFrame(() => setRightPadding())
-
-// Update line positions on scroll
-let scrollRaf = null
-function onScroll () {
-  if (scrollRaf) return
-  scrollRaf = requestAnimationFrame(() => {
-    positionLeaderLines()
-    scrollRaf = null
-  })
-}
-
-container.addEventListener('scroll', onScroll, { passive: true })
-scrollContainer.addEventListener('scroll', onScroll, { passive: true })
+window.addEventListener("load", setRightPadding);
+window.addEventListener("resize", setRightPadding);

@@ -6,14 +6,20 @@
     "tailwind": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
     "serve": "live-server ./src --port=5500",
     "dev": "concurrently \"npm run tailwind\" \"npm run serve\"",
+    "build": "rimraf build && npx @tailwindcss/cli -i ./src/input.css -o ./build/output.css && copyfiles -u 1 \"src/index.html\" \"src/js/**/*\" \"src/images/**/*\" build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "description": "",
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "rimraf": "^6.0.1"
+  },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.18",
     "concurrently": "^9.2.1",
+    "leader-line": "^1.0.8",
     "live-server": "^1.2.2",
     "tailwindcss": "^4.1.18"
   }

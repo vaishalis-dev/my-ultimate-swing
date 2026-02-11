@@ -1,4 +1,4 @@
-//main code
+//main code without GSAP
 
 const leftSticky = document.getElementById("left-sticky-wrapper");
 const rightScroll = document.getElementById("right-scroll-container");
