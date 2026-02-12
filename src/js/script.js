@@ -33,6 +33,7 @@ let scrollLocked = false;
 const SCROLL_LOCK_TIME = 250; // ms (tweak 350–600)
 
 const MD_BREAKPOINT = 768; // Tailwind md (≤768 = mobile)
+const MD_BREAKPOINT_LEFT_STICKY = 1025; // Tailwind md (≤768 = mobile)
 const MOBILE_SNAP_OFFSET_BELOW_CENTER = 0.35;
 const DESKTOP_SNAP_OFFSET_ABOVE_CENTER = 0.12; // snap target just above center
 const MOBILE_PADDING_OFFSET_RATIO = 0.12;
@@ -402,15 +403,16 @@ function setRightPadding() {
 
 function setLeftPadding() {
   if (!leftSticky) return;
-  const mdQuery = window.matchMedia(`(max-width: ${MD_BREAKPOINT}px)`);
+  const mdQuery = window.matchMedia(`(max-width: ${MD_BREAKPOINT_LEFT_STICKY}px)`);
   if (!mdQuery.matches) {
-    leftSticky.style.top = "0px";
+    console.log("setting left padding to 0px");
+    leftSticky.style.paddingTop = "0px";
     return;
   }
   const vh = window.innerHeight;
   const clientHeight = leftSticky.clientHeight;
   const isMobileView = window.matchMedia(
-    `(max-width: ${MD_BREAKPOINT}px)`,
+    `(max-width: ${MD_BREAKPOINT_LEFT_STICKY}px)`,
   ).matches;
   const leftHeight = leftSticky.getBoundingClientRect().height;
   const snapTargetY = isMobileView

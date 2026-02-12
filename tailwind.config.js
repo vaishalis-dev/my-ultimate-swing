@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {
+      // iPad Mini (768×1024) uses sm styles; md/lg start after 1024px
+      screens: {
+        md: "1025px",
+        lg: "1025px",
+      },
       fontFamily: {
         grotesk: ["Space Grotesk", "sans-serif"],
         spartan: ["League Spartan", "sans-serif"],
