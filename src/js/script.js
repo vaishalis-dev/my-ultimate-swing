@@ -1,5 +1,16 @@
 gsap.registerPlugin(ScrollTrigger, Observer);
 
+// Set --header-height so Key Features section can start strictly below the header
+function setHeaderHeight() {
+  const header = document.getElementById("global-header");
+  if (header) {
+    const h = header.getBoundingClientRect().height;
+    document.documentElement.style.setProperty("--header-height", `${h}px`);
+  }
+}
+setHeaderHeight();
+window.addEventListener("resize", setHeaderHeight);
+
 const container = document.getElementById("main-scroll-container");
 const sections = gsap.utils.toArray(".section");
 const logoLink = document.getElementById("logo-link");
@@ -391,10 +402,8 @@ function setRightPadding() {
 
 function setLeftPadding() {
   if (!leftSticky) return;
-  console.log("amin in -------------");
   const mdQuery = window.matchMedia(`(max-width: ${MD_BREAKPOINT}px)`);
   if (!mdQuery.matches) {
-    console.log("amin in ------------- if");
     leftSticky.style.top = "0px";
     return;
   }

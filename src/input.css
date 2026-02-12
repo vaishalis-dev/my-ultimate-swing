@@ -8,7 +8,9 @@ body {
 }
 
 #main-scroll-container {
+  /* Use dvh on mobile so height matches visible viewport (Android Chrome); 100vh fallback for older browsers */
   height: 100vh;
+  height: 100dvh;
   overflow-y: auto; /* MUST be scrollable */
   scroll-behavior: auto; /* GSAP controls movement */
   /* Hide scrollbar */
@@ -149,6 +151,30 @@ body {
     mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
+  }
+}
+
+/* Black footer bar: sticky to viewport bottom on scroll so it stays visible on tall phones (e.g. iPhone XR, 12); safe area for home indicator */
+.footer-legal-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  padding-bottom: 0.5rem;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Ensure download CTA stays above the black bar on Android: reserve space so it can scroll into view (dvh + sticky can leave CTA under bar) */
+.section-last .footer-sticky {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.section-last .footer-sticky > div:first-child {
+  padding-bottom: 0.5rem;
+}
+
+/* On tall viewports, cap the footer's flexible area so the black bar stays in view (not pushed below fold) */
+@media (min-height: 700px) {
+  .footer-sticky > div:first-child {
+    max-height: 55vh;
   }
 }
 
