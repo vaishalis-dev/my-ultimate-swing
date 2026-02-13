@@ -1,12 +1,18 @@
 @config "../tailwind.config.js";
 @import "tailwindcss";
 
-#scrollContainer {
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* page itself doesn't scroll */
+}
+
+#main-scroll-container {
+  /* Use dvh on mobile so height matches visible viewport (Android Chrome); 100vh fallback for older browsers */
   height: 100vh;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  scroll-snap-type: y mandatory;
+  height: 100dvh;
+  overflow-y: auto; /* MUST be scrollable */
+  scroll-behavior: auto; /* GSAP controls movement */
   /* Hide scrollbar */
   scrollbar-width: none;
   /* Firefox */
@@ -14,66 +20,42 @@
   /* IE & Edge */
 }
 
-#scrollContainer::-webkit-scrollbar {
+#main-scroll-container::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari */
 }
 
-html {
-  scroll-behavior: smooth;
+.right-scroll-container {
+  height: 100vh; /* viewport-sized */
+  overflow-y: auto; /* MUST scroll */
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE & Edge */
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
-section {
-  scroll-snap-align: start;
-  /* scroll-snap-stop: always; */
-  scroll-snap-stop: normal;
-  /* Allow smooth coasting between sections */
-}
-
-.divider {
-  scroll-snap-align: none;
-}
-
-/* Smooth transition for section content */
-section > * {
-  transition:
-    opacity 0.4s ease-out,
-    transform 0.4s ease-out;
-}
-
-/* Add a subtle fade transition between sections */
-.scroll-section {
-  transition: opacity 0.5s ease-in-out;
+.right-scroll-container::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari */
 }
 
 /* Text items styling */
 .text-item {
   grid-area: 1 / 1;
-  overflow: hidden;
-  max-height: 0;
-  /* inset: 0; */
-  /* width: 100%; */
   opacity: 0;
   transform: translateY(40px) scale(0.9);
   filter: blur(6px);
+  pointer-events: none;
 
   transition:
     opacity 1.2s cubic-bezier(0.25, 0.8, 0.25, 1),
     transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1),
     filter 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-  pointer-events: none;
 }
 
 /* ACTIVE (CENTER / HERO) */
 .text-item.active {
-  /* display: block; */
-  max-height: 500px;
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0);
@@ -95,23 +77,15 @@ section > * {
 }
 
 /* Image items styling */
-.right-scroll-wrapper {
-  position: relative;
-  isolation: isolate;
-}
-
-.right-scroll-wrapper svg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
 .step-image {
+  width: clamp(260px, 28vw, 460px);
+  max-width: 100%;
+  aspect-ratio: 16 / 10;
   position: relative;
   z-index: 2;
   background: linear-gradient(to bottom, #1c1b33, #2e335a);
   border-radius: 1rem;
+  opacity: 0.35;
   transition:
     opacity 0.6s ease,
     transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
@@ -120,14 +94,11 @@ section > * {
 }
 
 .step-image.active {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  width: clamp(300px, 32vw, 460px);
   opacity: 1;
-  transform: scale(1.2);
+  transform: scale(1.1);
   z-index: 5;
-}
-
-.step-image.active .image-wrapper {
-  border-color: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .step-image.prev,
@@ -136,52 +107,81 @@ section > * {
   z-index: 2;
 }
 
-.step-image.prev .low-opacity,
-.step-image.next .low-opacity {
-  opacity: 0.35;
+/* Active state: white borders on image and panel */
+.step-image > div {
+  transition: border-color 0.6s ease;
+}
+.step-image.active > div {
+  border-color: white;
 }
 
-.step-image.prev .image-wrapper,
-.step-image.next .image-wrapper {
-  border-color: black;
-}
-
-.step-image.prev .panel-border-opacity,
-.step-image.next .panel-border-opacity {
-  border-color: #b3afaf;
-}
-
-#connectorSvg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-#right-scroll-container {
-  /* padding-bottom: 50vh; */
-  /* Hide scrollbar */
-  scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE & Edge */
-  box-sizing: border-box;
-  scroll-snap-type: none;
-}
-
-#right-scroll-container::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari */
-}
-
-#left-sticky-wrapper {
-  height: fit-content;
-}
-
-/* your exact shadow */
 .icon-shadow {
   box-shadow:
     inset 1px 1px 0 rgba(174, 134, 226, 0.16),
     -10px -10px 22px rgba(201, 120, 255, 0.25),
     10px 10px 26px rgba(0, 0, 0, 0.45);
+}
+
+/* Top blur (frosted glass) only on mobile */
+@media (max-width: 767px) {
+  .left-side-container {
+    height: fit-content;
+    z-index: 10;
+  
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  
+    /* TOP blur only */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 25%,
+      transparent 65%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 25%,
+      transparent 65%,
+      transparent 100%
+    );
+  
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+}
+
+/* Black footer bar: sticky to viewport bottom on scroll so it stays visible on tall phones (e.g. iPhone XR, 12); safe area for home indicator */
+.footer-legal-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  padding-bottom: 0.5rem;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Ensure download CTA stays above the black bar on Android: reserve space so it can scroll into view (dvh + sticky can leave CTA under bar) */
+.section-last .footer-sticky {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.section-last .footer-sticky > div:first-child {
+  padding-bottom: 0.5rem;
+}
+
+/* On tall viewports, cap the footer's flexible area so the black bar stays in view (not pushed below fold) */
+@media (min-height: 700px) {
+  .footer-sticky > div:first-child {
+    max-height: 55vh;
+  }
+}
+
+/* Touch: disable native scroll so only Observer + GSAP drive section-to-section scroll */
+@media (pointer: coarse) {
+  #main-scroll-container,
+  .right-scroll-container {
+    touch-action: none;
+  }
 }

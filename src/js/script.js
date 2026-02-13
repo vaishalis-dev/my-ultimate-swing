@@ -1,16 +1,5 @@
 gsap.registerPlugin(ScrollTrigger, Observer);
 
-// Set --header-height so Key Features section can start strictly below the header
-function setHeaderHeight() {
-  const header = document.getElementById("global-header");
-  if (header) {
-    const h = header.getBoundingClientRect().height;
-    document.documentElement.style.setProperty("--header-height", `${h}px`);
-  }
-}
-setHeaderHeight();
-window.addEventListener("resize", setHeaderHeight);
-
 const container = document.getElementById("main-scroll-container");
 const sections = gsap.utils.toArray(".section");
 const logoLink = document.getElementById("logo-link");
@@ -22,7 +11,11 @@ const texts = gsap.utils.toArray(
 const scrollContainer = document.querySelector(".right-scroll-container");
 const images = gsap.utils.toArray(".right-scroll-container .step-image");
 const leftSticky = document.getElementById("left-sticky-wrapper");
-const sectionHeight = window.innerHeight;
+/** Section height = scroll container height so snapping works with 100dvh/100% (mobile-friendly). */
+function getSectionHeight() {
+  const h = container?.clientHeight;
+  return h && h > 0 ? h : window.innerHeight;
+}
 const imageHeight = (window.innerHeight * 40) / 100;
 
 let currentSection = 0;
@@ -52,7 +45,8 @@ logoLink.addEventListener("click", () => {
       scrollTop: 0,
       duration: 0.4,
       ease: "power2.inOut",
-    }).call(() => {
+    })
+    .call(() => {
       currentImage = 0;
       currentSection = 0;
       isAnimating = false;
@@ -105,7 +99,7 @@ function scrollToSection(index) {
   let triggered75 = false;
 
   gsap.to(container, {
-    scrollTop: index * sectionHeight,
+    scrollTop: index * getSectionHeight(),
     duration: 0.8,
     ease: "power2.inOut",
 
@@ -284,7 +278,7 @@ function enforceSectionScrollPosition() {
   scrollSnapRaf = requestAnimationFrame(() => {
     scrollSnapRaf = null;
     if (isAnimating || scrollLocked) return;
-    const expected = currentSection * sectionHeight;
+    const expected = currentSection * getSectionHeight();
     const current = container.scrollTop;
     if (Math.abs(current - expected) > SECTION_SNAP_TOLERANCE) {
       container.scrollTop = expected;
@@ -393,19 +387,21 @@ function setRightPadding() {
   }
 
   // Mobile: first image sits below center (same position as snap target)
-  // Image center = paddingTop + stepHeight/2 → we want that = vh/2 + offset
   const offset = vh * MOBILE_PADDING_OFFSET_RATIO;
   const paddingTop = centerPadding + offset;
-  const paddingBottom = centerPadding + offset;
+  let paddingBottom = centerPadding;
+  // paddingBottom = paddingBottom * 0.75;
   scrollContainer.style.paddingTop = `${Math.max(0, paddingTop)}px`;
   scrollContainer.style.paddingBottom = `${Math.max(0, paddingBottom)}px`;
 }
 
 function setLeftPadding() {
   if (!leftSticky) return;
-  const mdQuery = window.matchMedia(`(max-width: ${MD_BREAKPOINT_LEFT_STICKY}px)`);
+  const mdQuery = window.matchMedia(
+    `(max-width: ${MD_BREAKPOINT_LEFT_STICKY}px)`,
+  );
   if (!mdQuery.matches) {
-    console.log("setting left padding to 0px");
+    // console.log("setting left padding to 0px");
     leftSticky.style.paddingTop = "0px";
     return;
   }
@@ -420,11 +416,32 @@ function setLeftPadding() {
     : clientHeight / 2 - clientHeight * DESKTOP_SNAP_OFFSET_ABOVE_CENTER;
   leftSticky.style.paddingTop = `${snapTargetY}px`;
 }
+
+// function setRealViewportHeight() {
+//   const vh = window.visualViewport
+//     ? window.visualViewport.height
+//     : window.innerHeight;
+//   console.log("real viewPort height: ",vh);
+//   document.documentElement.style.setProperty("--vh", `${vh}px`);
+// }
+
+function setHeaderHeight() {
+  const header = document.getElementById("global-header");
+  if (header) {
+    const h = header.getBoundingClientRect().height;
+    console.log("header height: ", h);
+
+    document.documentElement.style.setProperty("--header-height", `${h}px`);
+  }
+}
+setHeaderHeight();
+// setRealViewportHeight();
+
+// window.addEventListener("resize", setRealViewportHeight);
+// window.addEventListener("orientationchange", setRealViewportHeight);
+window.addEventListener("resize", setHeaderHeight);
 window.addEventListener("load", setLeftPadding);
 window.addEventListener("resize", setLeftPadding);
-// window.addEventListener("load", setRightPadding);
-// window.addEventListener("resize", setRightPadding);
-// requestAnimationFrame(() => setLeftPadding());
 
 // ------ BELOW CODE IS FOR CONNECTORS -----
 

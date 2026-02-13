@@ -24,96 +24,99 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./output.css" />
-    <script src="./js/script.js" defer></script>
+    <!-- <script src="./js/script.js" defer></script> -->
   </head>
 
-  <body class="min-h-screen overflow-x-hidden bg-app-gradient">
-    <!-- GLOBAL HEADER -->
-    <header
-      class="w-full fixed top-0 left-0 z-50 bg-header-gradient backdrop-blur-[10px]"
-    >
-      <div class="max-w-[90%] sm:max-w-[85%] mx-auto py-3 md:py-4">
-        <div class="flex items-center justify-between">
-          <!-- Brand / Logo -->
-          <div class="flex items-center gap-3 sm:gap-4">
-            <div
-              class="flex items-center justify-center w-10 h-10 rounded-lg sm:h-12 sm:w-12 bg-white/80 backdrop-blur-md"
-            >
-              <a href="/" aria-label="My Ultimate Swing Home">
-                <img
-                  src="./images/logo.svg"
-                  alt="My Ultimate Swing logo"
-                  class="w-full h-full"
-                />
-              </a>
-            </div>
-
-            <div class="flex flex-col">
-              <h1
-                class="font-grotesk text-lg sm:text-2xl md:text-3xl font-medium text-white tracking-[-0.37px] leading-none"
-              >
-                MY ULTIMATE SWING
-              </h1>
-              <span
-                class="font-spartan text-sm sm:text-lg tracking-[-0.37px] text-[#40cbd8] leading-tight"
-              >
-                Every great swing is personal!
-              </span>
-            </div>
-          </div>
-
-          <!-- App Download Stats -->
-          <div class="flex items-center gap-4 sm:gap-6 md:gap-8">
-            <span
-              class="h-8 sm:h-9 w-[1.5px] bg-white/35"
-              aria-hidden="true"
-            ></span>
-
-            <div
-              class="flex items-center sm:gap-1"
-              role="group"
-              aria-label="App downloads"
-            >
+  <body class="bg-app-gradient">
+    <div id="main-scroll-container" class="w-full">
+      <!-- GLOBAL HEADER -->
+      <header
+        id="global-header"
+        class="w-full fixed top-0 left-0 z-50 bg-header-gradient backdrop-blur-[10px]"
+      >
+        <div
+          class="max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] mx-auto px-2 py-2 sm:py-3 md:py-4"
+        >
+          <div class="flex items-center justify-between">
+            <!-- Brand / Logo -->
+            <div class="flex items-center gap-[clamp(0.375rem,2vw,1rem)]">
               <div
-                class="flex items-center justify-center w-8 h-8 sm:h-10 sm:w-10"
+                class="flex flex-shrink-0 items-center justify-center rounded-lg bg-white/80 backdrop-blur-md w-[clamp(1.75rem,8vw,3rem)] h-[clamp(1.75rem,8vw,3rem)]"
               >
-                <img
-                  src="./images/icons/down_arrow.svg"
-                  alt=""
-                  aria-hidden="true"
-                  class="w-full h-full"
-                />
+                <a href="#" id="logo-link" aria-label="My Ultimate Swing Home">
+                  <img
+                    src="./images/logo.svg"
+                    alt="My Ultimate Swing logo"
+                    class="h-full w-full object-contain"
+                  />
+                </a>
               </div>
 
-              <div class="flex flex-col font-montserrat">
-                <span
-                  class="text-2xl sm:text-3xl font-bold leading-none tracking-[-0.2px] text-[#40cbd8]"
+              <div class="flex flex-col">
+                <h1
+                  class="font-grotesk font-medium text-white tracking-[-0.37px] leading-none text-[clamp(0.875rem,4.5vw,1.875rem)]"
                 >
-                  10K+
-                </span>
+                  MY ULTIMATE SWING
+                </h1>
                 <span
-                  class="text-xs sm:text-sm font-semibold leading-none tracking-[-0.11px] text-white"
+                  class="font-spartan tracking-[-0.37px] text-[#40cbd8] leading-tight text-[clamp(0.75rem,3.2vw,1.125rem)]"
                 >
-                  Download
+                  Every great swing is personal!
                 </span>
+              </div>
+            </div>
+
+            <!-- App Download Stats -->
+            <div class="flex items-center gap-[clamp(0.75rem,3vw,2rem)]">
+              <span
+                class="h-[clamp(1.25rem,5vw,2.25rem)] w-px min-w-px flex-shrink-0 bg-white/35"
+                aria-hidden="true"
+              ></span>
+
+              <div
+                class="flex items-center gap-[clamp(0.25rem,1vw,0.5rem)]"
+                role="group"
+                aria-label="App downloads"
+              >
+                <div
+                  class="flex flex-shrink-0 items-center justify-center w-[clamp(1.5rem,6vw,2.5rem)] h-[clamp(1.5rem,6vw,2.5rem)]"
+                >
+                  <img
+                    src="./images/icons/down_arrow.svg"
+                    alt=""
+                    aria-hidden="true"
+                    class="h-full w-full object-contain"
+                  />
+                </div>
+
+                <div class="flex flex-col font-montserrat">
+                  <span
+                    class="font-bold leading-none tracking-[-0.2px] text-[#40cbd8] text-[clamp(1rem,4vw,1.875rem)]"
+                  >
+                    10K+
+                  </span>
+                  <span
+                    class="font-semibold leading-none tracking-[-0.11px] text-white text-[clamp(0.6875rem,2.5vw,1rem)]"
+                  >
+                    Download
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <main id="scrollContainer" class="relative w-full">
       <!-- Hero Section -->
       <section
-        class="relative flex flex-col items-center justify-center w-full min-h-screen pt-24 hero-section scroll-section md:pt-28"
+        class="relative flex flex-col items-center justify-center w-full overflow-hidden hero-section scroll-section h-svh pt-28"
       >
         <!-- Inline svg -->
         <svg
           viewBox="0 0 1440 1024"
           preserveAspectRatio="none"
           fill="none"
-          class="absolute bottom-0 left-0 right-0 w-full h-full top-10"
+          class="absolute bottom-0 left-0 right-0 w-full h-full top-10 hidden sm:block"
           xmlns="http://www.w3.org/2000/svg"
         >
           <foreignObject x="0" y="0" width="0" height="0"
@@ -194,18 +197,26 @@
           </defs>
         </svg>
 
-        <div class="relative w-[90%] sm:w-[85%] mx-auto">
-          <div
-            class="flex flex-col justify-between gap-4 sm:gap-8 md:gap-10 md:flex-row"
-          >
+        <div
+          class="relative w-[95%] sm:w-[90%] md:w-[85%] px-2 mx-auto h-full flex items-center"
+        >
+          <div class="flex flex-col w-full gap-2 md:gap-10 md:flex-row">
             <!-- LEFT CONTENT -->
-            <div class="text-white font-inter">
-              <span
-                class="inline-block rounded-full text-xl sm:text-2xl bg-[#EFB20C] px-10 py-2 mb-4 sm:mb-6 md:mb-8 font-semibold"
+            <div
+              class="flex flex-col justify-center text-white font-inter md:flex-1 min-h-0"
+            >
+              <!-- <span
+                class="inline-block rounded-full w-fit text-lg sm:text-xl md:text-2xl bg-[#EFB20C] px-8 sm:px-10 py-0.5 sm:py-1 md:py-2 mb-2 sm:mb-4 md:mb-6 md:mb-8 font-semibold"
                 >The Genesis</span
+              > -->
+              <span
+                class="inline-block w-fit rounded-full bg-[#EFB20C] px-[clamp(18px,3vw,56px)] py-[clamp(3px,0.7vw,10px)] text-[clamp(12px,1.4vw,22px)] mb-[clamp(10px,2vh,32px)] font-semibold tracking-wide"
               >
+                The Genesis
+              </span>
+
               <p
-                class="w-full text-sm font-light leading-snug sm:max-w-2xl sm:text-xl md:text-2xl text-white/85"
+                class="font-light max-w-[65ch] text-[clamp(13px,1.6vw,22px)] leading-[1.35] text-white/85 overflow-hidden"
               >
                 My Ultimate Swing wasn't created in a boardroom; it was forged
                 on the fairway. We realized that every golfer possesses a unique
@@ -224,14 +235,14 @@
             </div>
 
             <!-- RIGHT IMAGE -->
-            <div class="flex justify-center md:justify-end">
+            <div class="flex md:flex-1 w-full md:justify-end justify-center">
               <div
-                class="w-full h-auto overflow-hidden shadow-2xl rounded-2xl md:h-145 md:w-auto"
+                class="h-[60svh] md:h-[70svh] lg:h-[80svh] w-auto aspect-[4/5] overflow-hidden shadow-2xl rounded-2xl"
               >
                 <img
                   src="./images/Golfer_swing.svg"
                   alt="Golfer swing"
-                  class="object-cover w-full h-full"
+                  class="object-contain w-full h-full"
                 />
               </div>
             </div>
@@ -239,32 +250,29 @@
         </div>
       </section>
 
-      <!-- SECTION DIVIDER -->
-      <div
-        class="relative w-full h-[20vh] bg-transparent pointer-events-none divider"
-      ></div>
-
       <!-- Main Content -->
-      <section id="main-content" class="relative min-h-screen scroll-section">
-        <div
-          class="relative max-w-[90%] sm:max-w-[85%] gap-20 flex items-start mx-auto w-full h-full"
-        >
-          <!-- Left-Sticky-Wrapper -->
-          <div id="left-sticky-wrapper" class="sticky w-1/3 text-black">
-            <div class="grid w-full max-w-md place-items-center">
+      <section
+        class="relative flex flex-col md:flex-row gap-10 w-full sm:max-w-[90%] lg:max-w-[85%] px-2 mx-auto section section2"
+      >
+        <!-- Left sticky Wrapper -->
+        <div class="w-full px-4 md:px-0 md:w-1/3 absolute md:static left-side-container">
+          <div id="left-sticky-wrapper"
+            class="relative md:sticky md:top-0 flex flex-col items-center md:justify-center min-h-screen md:h-screen text-wrapper z-20"
+          >
+            <div class="grid w-full md:max-w-md data-text md:place-items-center">
               <!-- Text 1: Record Swing -->
-              <div class="text-item active" id="text-record">
-                <div class="flex items-center gap-6 mb-6">
+              <div class="text-item" id="text-record">
+                <div class="flex items-center gap-6 mb-2 sm:mb-4 md:mb-6">
                   <img
                     src="./images/recording.svg"
                     alt="Recording Image"
-                    class="w-20 h-20"
+                    class="w-[clamp(42px,5vw,80px)] h-[clamp(42px,5vw,80px)] shrink-0"
                   />
-                  <h2 class="text-[#40CBD8] font-bold text-2xl">
+                  <h2 class="text-[#40CBD8] font-bold text-[clamp(20px,2.2vw,32px)] leading-[1.15]">
                     Record Swing
                   </h2>
                 </div>
-                <p class="text-xl text-white">
+                <p class="text-[clamp(14px,1.05vw,20px)] leading-[clamp(20px,1.6vw,26px)] text-white">
                   <span class="text-[#40CBD8] italic"
                     >Every masterpiece begins with a first stroke.<br />
                     Record yours.</span
@@ -278,15 +286,15 @@
 
               <!-- Text 2: Compare -->
               <div class="text-item" id="text-compare">
-                <div class="flex items-center gap-6 mb-6">
+                <div class="flex items-center gap-6 mb-2 sm:mb-4 md:mb-6">
                   <img
                     src="./images/compare.svg"
                     alt="Compare Image"
-                    class="w-20 h-20"
+                    class="w-[clamp(42px,5vw,80px)] h-[clamp(42px,5vw,80px)] shrink-0"
                   />
-                  <h2 class="text-[#40CBD8] font-bold text-xl">Compare</h2>
+                  <h2 class="text-[#40CBD8] font-bold text-[clamp(20px,2.2vw,32px)] leading-[1.15]">Compare</h2>
                 </div>
-                <p class="text-lg text-white">
+                <p class="text-[clamp(14px,1.05vw,20px)] leading-[clamp(20px,1.6vw,26px)] text-white">
                   <span class="text-[#40CBD8] italic"
                     >Clarity shapes mastery.</span
                   >
@@ -299,15 +307,15 @@
 
               <!-- Text 3: Analyze -->
               <div class="text-item" id="text-analyze">
-                <div class="flex items-center gap-6 mb-6">
+                <div class="flex items-center gap-6 mb-2 sm:mb-4 md:mb-6">
                   <img
                     src="./images/analyze.svg"
                     alt="Analyze image"
-                    class="w-20 h-20"
+                    class="w-[clamp(42px,5vw,80px)] h-[clamp(42px,5vw,80px)] shrink-0"
                   />
-                  <h2 class="text-[#40CBD8] font-bold text-2xl">Analyze</h2>
+                  <h2 class="text-[#40CBD8] font-bold text-[clamp(20px,2.2vw,32px)] leading-[1.15]">Analyze</h2>
                 </div>
-                <p class="text-xl text-white">
+                <p class="text-[clamp(14px,1.05vw,20px)] leading-[clamp(20px,1.6vw,26px)] text-white">
                   <span class="text-[#40CBD8] italic"
                     >Where intuition meets intelligence.</span
                   >
@@ -321,15 +329,15 @@
 
               <!-- Text 4: Insight -->
               <div class="text-item" id="text-insight">
-                <div class="flex items-center gap-6 mb-6">
+                <div class="flex items-center gap-6 mb-2 sm:mb-4 md:mb-6">
                   <img
                     src="./images/insight.svg"
                     alt="Recording Image"
-                    class="w-20 h-20"
+                    class="w-[clamp(42px,5vw,80px)] h-[clamp(42px,5vw,80px)] shrink-0"
                   />
-                  <h2 class="text-[#40CBD8] font-bold text-2xl">Insight</h2>
+                  <h2 class="text-[#40CBD8] font-bold text-[clamp(20px,2.2vw,32px)] leading-[1.15]">Insight</h2>
                 </div>
-                <p class="text-xl text-white">
+                <p class="text-[clamp(14px,1.05vw,20px)] leading-[clamp(20px,1.6vw,26px)] text-white">
                   <span class="text-[#40CBD8] italic"
                     >Where awareness becomes evolution.</span
                   >
@@ -340,211 +348,188 @@
                   progress.
                 </p>
               </div>
-              
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Scroll Wrapper -->
+        <div
+          class="relative flex flex-col w-full px-4 md:px-8 md:w-2/3 right-scroll-container md:gap-y-30 gap-y-[10vh]"
+        >
+          <!-- IMAGE 01 -->
+          <div
+            class="relative flex justify-end gap-0 image-container"
+            data-anchor
+          >
+            <div class="flex step-image">
+              <!-- LEFT IMAGE -->
+              <div
+                class="flex border-4 overflow-hidden border-r-0 border-black rounded-l-2xl group flex-1"
+              >
+                <div class="relative overflow-hidden w-full h-full">
+                  <img
+                    src="./images/Image01.svg"
+                    alt="Image01"
+                    class="object-cover w-full h-full"
+                  />
+                </div>
+              </div>
+              <!-- RIGHT PANEL -->
+              <div
+                class="bg-linear-to-b from-[#FDCB1D] to-[#E79103] flex flex-col items-center justify-between px-1 py-4 border-4 border-[#b3afaf] rounded-r-2xl"
+              >
+                <span class="text-[clamp(28px,4vw,60px)] font-bold text-white">01</span>
+                <p
+                  class="text-[clamp(10px,0.9vw,14px)] leading-[clamp(12px,1.2vw,16px)] font-semibold tracking-wide text-white uppercase"
+                >
+                  Record
+                </p>
+              </div>
             </div>
           </div>
 
-          <!-- Right-Scroll-Wrapper -->
+          <!-- IMAGE 02 -->
           <div
-            id="right-scroll-container"
-            class="relative flex flex-col w-2/3 gap-y-20"
+            class="relative flex justify-start gap-0 image-container"
+            data-anchor
           >
-            <!-- IMAGE 01 -->
-            <section
-              class="relative flex justify-end gap-0"
-              data-step="0"
-              data-anchor
-            >
-              <div class="flex step-image active">
-                <!-- LEFT IMAGE -->
-                <div
-                  class="flex border-4 border-r-0 border-white rounded-l-2xl group image-wrapper"
+            <div class="flex step-image">
+              <!-- LEFT PANEL -->
+              <div
+                class="bg-linear-to-b from-[#EB59B2] to-[#B7217D] flex flex-col items-center justify-between px-1 py-4 border-4 border-[#b3afaf] rounded-l-2xl"
+              >
+                <span class="text-[clamp(28px,4vw,60px)] font-bold text-white">02</span>
+                <p
+                  class="text-[clamp(10px,0.9vw,14px)] leading-[clamp(12px,1.2vw,16px)] font-semibold tracking-wide text-white uppercase"
                 >
-                  <div class="relative overflow-hidden h-60 w-80">
+                  Compare
+                </p>
+              </div>
+
+              <!-- RIGHT IMAGE -->
+              <div
+                class="flex overflow-hidden border-4 border-l-0 border-black rounded-r-2xl group flex-1"
+              >
+                <div class="relative flex gap-0 overflow-hidden w-full h-full">
+                  <img
+                    src="./images/Image02.svg"
+                    alt="Image02"
+                    class="w-full h-full"
+                  />
+                  <img
+                    src="./images/Image02.svg"
+                    alt="Image02"
+                    class="w-full h-full"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- IMAGE 03 -->
+          <div
+            class="relative flex justify-end gap-0 image-container"
+            data-anchor
+          >
+            <div class="flex step-image">
+              <!-- LEFT IMAGE -->
+              <div
+                class="flex overflow-hidden border-4 border-r-0 border-black rounded-l-2xl group flex-1"
+              >
+                <div class="relative overflow-hidden w-full h-full">
+                  <img
+                    src="./images/Image03.svg"
+                    alt="Image03"
+                    class="object-cover w-full h-full"
+                  />
+                </div>
+              </div>
+              <!-- RIGHT PANEL -->
+              <div
+                class="bg-linear-to-b from-[#A576C7] to-[#68408C] flex flex-col items-center justify-between px-1 py-4 border-4 border-[#b3afaf] rounded-r-2xl"
+              >
+                <span class="text-[clamp(28px,4vw,60px)] font-bold text-white">03</span>
+                <p
+                  class="text-[clamp(10px,0.9vw,14px)] leading-[clamp(12px,1.2vw,16px)] font-semibold tracking-wide text-white uppercase"
+                >
+                  Analyze
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- IMAGE 04 -->
+          <div
+            class="relative flex md:justify-start gap-0 image-container"
+            data-anchor
+          >
+            <div class="flex step-image">
+              <!-- LEFT PANEL -->
+              <div
+                class="bg-linear-to-b from-[#5DD7F2] to-[#1C9EBB] border-4 border-[#b3afaf] flex flex-col items-center justify-between px-1 py-4 rounded-l-2xl panel-border-opacity"
+              >
+                <span class="text-[clamp(28px,4vw,60px)] font-bold text-white">04</span>
+                <p
+                  class="text-[clamp(10px,0.9vw,14px)] leading-[clamp(12px,1.2vw,16px)] font-semibold tracking-wide text-white uppercase"
+                >
+                  Insight
+                </p>
+              </div>
+
+              <!-- RIGHT IMAGE: 1/3 big image + 2/3 four vertical images -->
+              <div
+                class="flex overflow-hidden border-4 border-l-0 border-black rounded-r-2xl group flex-1 min-w-0"
+              >
+                <div class="relative flex w-full h-full overflow-hidden">
+                  <!-- Big image: 1/3 of right side -->
+                  <div class="flex w-1/3 flex-shrink-0 items-center justify-center overflow-hidden bg-[#1c1b33]">
                     <img
-                      src="./images/Image01.svg"
-                      alt="Image01"
-                      class="object-cover w-full h-full low-opacity"
+                      src="./images/Image04.svg"
+                      alt="Insight icon"
+                      class="h-14 w-auto max-w-full object-contain sm:h-20 md:h-24 lg:h-[120px]"
                     />
                   </div>
-                </div>
-                <!-- RIGHT PANEL -->
-                <div
-                  class="bg-linear-to-b from-[#FDCB1D] to-[#E79103] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-r-2xl panel-border-opacity"
-                >
-                  <span class="text-6xl font-bold text-white">01</span>
-                  <p
-                    class="text-sm font-semibold tracking-wide text-white uppercase"
-                  >
-                    Record
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <!-- IMAGE 02 -->
-            <section
-              class="relative flex justify-start gap-0"
-              data-step="0"
-              data-anchor
-            >
-              <div class="flex step-image active">
-                <!-- LEFT PANEL -->
-                <div
-                  class="bg-linear-to-b from-[#EB59B2] to-[#B7217D] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-l-2xl panel-border-opacity"
-                >
-                  <span class="text-6xl font-bold text-white">02</span>
-                  <p
-                    class="text-sm font-semibold tracking-wide text-white uppercase"
-                  >
-                    Compare
-                  </p>
-                </div>
-
-                <!-- RIGHT IMAGE -->
-                <div
-                  class="flex overflow-hidden border-4 border-l-0 border-white rounded-r-2xl group image-wrapper"
-                >
-                  <div class="relative flex gap-0 overflow-hidden h-60 w-80">
-                    <img
-                      src="./images/Image02.svg"
-                      alt="Image02"
-                      class="w-full h-full low-opacity"
-                    />
-                    <img
-                      src="./images/Image02.svg"
-                      alt="Image02"
-                      class="w-full h-full low-opacity"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="absolute right-60 bottom-20">
-                <img src="./images/yellow_connector.svg" alt="" />
-              </div>
-            </section>
-
-            <!-- IMAGE 03 -->
-            <section
-              class="relative flex justify-end gap-0"
-              data-step="0"
-              data-anchor
-            >
-              <div class="absolute right-60 bottom-20">
-                <img src="./images/pink_connector.svg" alt="" />
-              </div>
-              <div class="flex step-image active">
-                <!-- LEFT IMAGE -->
-                <div
-                  class="flex overflow-hidden border-4 border-r-0 border-white rounded-l-2xl group image-wrapper"
-                >
-                  <div class="relative overflow-hidden h-60 w-80">
-                    <img
-                      src="./images/Image03.svg"
-                      alt="Image03"
-                      class="object-cover w-full h-full low-opacity"
-                    />
-                  </div>
-                </div>
-                <!-- RIGHT PANEL -->
-                <div
-                  class="bg-linear-to-b from-[#A576C7] to-[#68408C] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-r-2xl panel-border-opacity"
-                >
-                  <span class="text-6xl font-bold text-white">03</span>
-                  <p
-                    class="text-sm font-semibold tracking-wide text-white uppercase"
-                  >
-                    Analyze
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <!-- IMAGE 04 -->
-            <section
-              class="relative flex justify-start gap-0"
-              data-step="0"
-              data-anchor
-            >
-              <div class="flex step-image active">
-                <!-- LEFT PANEL -->
-                <div
-                  class="bg-linear-to-b from-[#5DD7F2] to-[#1C9EBB] low-opacity flex flex-col items-center justify-between py-4 border-white w-[90px] border-4 rounded-l-2xl panel-border-opacity"
-                >
-                  <span class="text-6xl font-bold text-white">04</span>
-                  <p
-                    class="text-sm font-semibold tracking-wide text-white uppercase"
-                  >
-                    Insight
-                  </p>
-                </div>
-
-                <!-- RIGHT IMAGE -->
-                <div
-                  class="flex overflow-hidden border-4 border-l-0 border-white rounded-r-2xl group image-wrapper"
-                >
-                  <div class="relative flex gap-0 overflow-hidden h-60 w-80">
-                    <div class="flex items-center justify-center w-[120px]">
-                      <img
-                        src="./images/Image04.svg"
-                        alt="Insight icon"
-                        class="h-[140px] w-auto low-opacity"
-                      />
+                  <!-- Four images stacked vertically: rest of space -->
+                  <div class="flex flex-1 min-w-0 flex-col gap-0.5 p-1">
+                    <div class="flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+                      <img src="./images/Modal01.svg" alt="" class="h-full w-full object-contain" />
                     </div>
-                    <div class="flex flex-col justify-between flex-1 px-2 py-2">
-                      <img
-                        src="./images/Modal01.svg"
-                        alt="Image04"
-                        class="h-[80px] w-full object-contain low-opacity"
-                      />
-                      <img
-                        src="./images/Modal01.svg"
-                        alt="Image04"
-                        class="h-[80px] w-full object-contain low-opacity"
-                      />
-                      <img
-                        src="./images/Modal01.svg"
-                        alt="Image04"
-                        class="h-[80px] w-full object-contain low-opacity"
-                      />
-                      <img
-                        src="./images/Modal01.svg"
-                        alt="Image04"
-                        class="h-[80px] w-full object-contain low-opacity"
-                      />
+                    <div class="flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+                      <img src="./images/Modal01.svg" alt="" class="h-full w-full object-contain" />
+                    </div>
+                    <div class="flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+                      <img src="./images/Modal01.svg" alt="" class="h-full w-full object-contain" />
+                    </div>
+                    <div class="flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+                      <img src="./images/Modal01.svg" alt="" class="h-full w-full object-contain" />
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="absolute bottom-30 right-50">
-                <img src="./images/purple_connector.svg" alt="" />
-              </div>
-            </section>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION DIVIDER -->
-      <div
-        class="relative w-full h-[30vh] bg-transparent pointer-events-none divider"
-      ></div>
-
-      <!-- Key Features + Footer -->
+      <!-- Key Features + Footer: start strictly below header; footer fills any extra space -->
       <section
-        class="relative flex flex-col w-full min-h-screen gap-6 pt-24 scroll-section md:pt-28"
+      class="section-last relative flex min-h-screen flex-col w-full section"
+      style="padding-top: var(--header-height, 2.5rem);"
       >
         <div
-          class="relative max-w-[90%] md:max-w-[85%] mx-auto flex flex-col md:flex-row gap-10"
+          class="key-features-content relative max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] py-2 px-2 mx-auto flex flex-1 min-h-0 flex-col md:flex-row gap-2 md:gap-4"
         >
-          <!-- Left side -->
-          <div class="flex flex-col w-full gap-4 md:w-1/2">
+          <!-- Left side: heading, paragraph, then flexible space below paragraph -->
+          <div class="flex flex-col w-full gap-1 sm:gap-1.5 md:gap-3 md:w-1/2 min-h-0">
             <h3
-              class="text-2xl md:text-3xl font-bold bg-linear-to-b from-[#FDCB1D] to-[#E79103] bg-clip-text text-transparent uppercase font-montserrat"
+              class="font-bold bg-linear-to-b from-[#FDCB1D] to-[#E79103] bg-clip-text text-transparent uppercase font-montserrat"
+              style="font-size: clamp(18px, 3vw, 32px)"
             >
               Key Features
             </h3>
             <p
-              class="text-[#FFFFFFCC] font-['Inter'] max-w-xl text-sm sm:text-base md:text-lg leading-tight"
+              class="text-[#FFFFFFCC] font-['Inter'] max-w-xl leading-snug"
+              style="font-size: clamp(10px, 1.5vw, 18px)"
             >
               Improvement begins with clarity. My Ultimate Swing transforms
               movement into understanding, giving you a deeper connection to
@@ -560,28 +545,30 @@
               is part of a process that honors patience, mastery, and personal
               growth.Because improvement is not a moment. It is a journey.
             </p>
+            <div class="flex-1 min-h-0" aria-hidden="true"></div>
           </div>
 
-          <!-- Right side -->
-          <div class="w-full md:w-1/2">
-            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <!-- Right side: cards -->
+          <div class="w-full md:w-1/2 min-h-0 flex flex-col">
+            <div class="grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3">
               <!-- Card 1 -->
               <div
-                class="relative rounded-2xl px-6 pt-4 pb-2 border border-white bg-[#28214d]"
+                class="relative rounded-xl md:rounded-2xl md:px-5 px-2 sm:px-3 md:pt-3 pt-1 sm:pt-2 pb-2 border border-white bg-[#28214d]"
               >
                 <img
                   src="./images/icons/video_comparison.png"
-                  alt="Video Comparison"
-                  class="rounded-full w-15 icon-shadow bg-linear-to-b from-[#1c1535] to-[#634594] mb-4"
+                  class="rounded-full w-6 sm:w-12 md:w-15 icon-shadow bg-linear-to-b from-[#1c1535] to-[#634594] mb-1 md:mb-2"
                 />
 
                 <h4
                   class="text-[#40CBD8] text-lg leading-tight tracking-wide mb-1 font-semibold uppercase"
+                  style="font-size: clamp(10px, 1.5vw, 20px)"
                 >
                   Video Comparison
                 </h4>
                 <p
                   class="text-sm text-white leading-[1.2] tracking-wider text-left"
+                  style="font-size: clamp(8px, 1.02vw, 18px)"
                 >
                   Place your present beside your Ultimate. See subtle
                   differences, reveal hidden patterns, and let contrast guide
@@ -591,20 +578,21 @@
 
               <!-- Card 2 -->
               <div
-                class="relative rounded-2xl px-6 pt-4 pb-2 border border-white bg-[#28214d]"
+                class="relative rounded-xl md:rounded-2xl md:px-5 px-2 sm:px-3 md:pt-3 pt-1 sm:pt-2 pb-2 border border-white bg-[#28214d]"
               >
                 <img
                   src="./images/icons/progress_tracking.png"
-                  alt="Progress tracking"
-                  class="rounded-full w-15 icon-shadow bg-linear-to-b from-[#1c1535] to-[#634594] mb-4"
+                  class="rounded-full w-6 sm:w-12 md:w-15 icon-shadow bg-linear-to-b from-[#1c1535] to-[#634594] mb-1 md:mb-2"
                 />
                 <h4
                   class="text-[#40CBD8] text-lg leading-tight tracking-wide mb-1 uppercase font-semibold"
+                  style="font-size: clamp(10px, 1.5vw, 20px)"
                 >
                   Progress tracking
                 </h4>
                 <p
                   class="text-sm text-white leading-[1.2] text-left tracking-wider pr-5"
+                  style="font-size: clamp(8px, 1.02vw, 18px)"
                 >
                   Progress is a journey, not a moment. Track your evolution over
                   time and watch intention turn into measurable growth.
@@ -613,21 +601,22 @@
 
               <!-- Card 3 -->
               <div
-                class="relative rounded-2xl px-6 pt-4 pb-2 border border-white bg-[#28214d]"
+                class="relative rounded-xl md:rounded-2xl md:px-5 px-2 sm:px-3 md:pt-3 pt-1 sm:pt-2 pb-2 border border-white bg-[#28214d]"
               >
                 <img
                   src="./images/icons/swing_library.png"
-                  alt="Swing Library"
-                  class="rounded-full w-15 icon-shadow bg-linear-to-b from-[#1c1535] to-[#634594] mb-4"
+                  class="rounded-full w-6 sm:w-12 md:w-15 icon-shadow bg-linear-to-b from-[#1c1535] to-[#634594] mb-1 md:mb-2"
                 />
                 <h4
                   class="text-[#40CBD8] text-lg leading-tight tracking-wide mb-1 font-semibold uppercase"
+                  style="font-size: clamp(10px, 1.5vw, 20px)"
                 >
                   Swing Library
                 </h4>
                 <!-- <div class="bg-red-300"> -->
                 <p
                   class="text-sm text-white leading-[1.2] tracking-wider text-left pr-5"
+                  style="font-size: clamp(8px, 1.02vw, 18px)"
                 >
                   Your swing is your signature. <br />
                   Build a personal archive of movement, discovery, and
@@ -638,20 +627,21 @@
 
               <!-- Card 4 -->
               <div
-                class="relative rounded-2xl px-6 pt-4 pb-2 border border-white bg-[#28214d]"
+                class="relative rounded-xl md:rounded-2xl md:px-5 px-2 sm:px-3 md:pt-3 pt-1 sm:pt-2 pb-2 border border-white bg-[#28214d]"
               >
                 <img
                   src="./images/icons/easy_to_use.png"
-                  alt="Video Comparison"
-                  class="rounded-full w-15 icon-shadow bg-linear-to-b from-[#1c1535] to-[#634594] mb-4"
+                  class="rounded-full w-6 sm:w-12 md:w-15 icon-shadow bg-linear-to-b from-[#1c1535] to-[#634594] mb-1 md:mb-2"
                 />
                 <h4
                   class="text-[#40CBD8] text-lg leading-tight tracking-wide mb-1 font-semibold uppercase"
+                  style="font-size: clamp(10px, 1.5vw, 20px)"
                 >
                   Easy to use
                 </h4>
                 <p
                   class="text-sm text-white leading-[1.2] tracking-wider text-left"
+                  style="font-size: clamp(8px, 1.02vw, 18px)"
                 >
                   Refinement should feel effortless.Designed to disappear into
                   your process so your focus stays on your craft.
@@ -661,56 +651,57 @@
           </div>
         </div>
 
-        <!-- Footer -->
-        <section class="relative flex flex-col w-full gap-8 mt-auto">
-          <div class="w-full bg-[#292653] border-[#3a3770] border-2">
-            <div class="max-w-4xl px-6 py-6 mx-auto text-center">
-              <p class="text-[#FFC300] text-xl sm:text-2xl font-semibold">
+        <!-- Footer: sticks to bottom; any remaining space becomes padding above/below purple CTA -->
+        <footer class="footer-sticky relative mt-auto flex flex-1 min-h-0 flex-col w-full">
+          <div class="flex-1 min-h-0 flex flex-col justify-center">
+            <div class="flex-1 min-h-0" aria-hidden="true"></div>
+            <div class="w-full shrink-0 bg-[#292653] border-[#3a3770] border-2">
+              <div class="max-w-4xl mx-auto text-center px-[clamp(0.5rem,3vw,1.25rem)] py-[clamp(0.5rem,2vw,0.875rem)]">
+              <p class="text-[#FFC300] font-semibold text-[clamp(0.8rem,2.2vw,1.25rem)] leading-tight">
                 Ready to perfect your swing?
               </p>
               <p
-                class="max-w-lg px-10 mx-auto mt-1 text-base leading-tight text-white/70"
+                class="max-w-lg mx-auto leading-tight text-white/70 text-[clamp(0.6875rem,1.5vw,0.9rem)] px-2 mt-0.5"
               >
                 Join thousands of golfers who are improving their game with My
                 Ultimate Swing
               </p>
-              <!-- Buttons -->
               <div
-                class="flex flex-col items-center justify-center gap-4 mt-6 sm:flex-row"
+                class="flex items-center justify-center gap-[clamp(0.35rem,1.2vw,0.5rem)] mt-[clamp(0.4rem,1.2vw,0.6rem)]"
               >
-                <!-- iOS Button -->
                 <button
-                  class="flex items-center justify-center gap-2 px-6 py-3 text-black transition bg-white rounded-full shadow-lg w-55 hover:scale-105"
+                  class="flex min-w-[7.5rem] items-center justify-center gap-[clamp(0.2rem,0.6vw,0.3rem)] rounded-full bg-white px-[clamp(0.6rem,2.2vw,0.9rem)] py-[clamp(0.3rem,1vw,0.45rem)] text-black shadow-lg transition hover:scale-105"
                 >
-                  <img src="./images/icons/apple_icon.svg" alt="IOS Icon" />
-                  <span class="text-sm font-bold text-black"
-                    >Download on iOS</span
-                  >
+                  <img src="./images/icons/apple_icon.svg" alt="iOS" class="h-[clamp(0.8rem,2vw,1rem)] w-[clamp(0.8rem,2vw,1rem)] shrink-0 object-contain" />
+                  <span class="whitespace-nowrap font-bold text-[clamp(0.6rem,1.4vw,0.75rem)]">Download on iOS</span>
                 </button>
                 <button
-                  class="bg-[#99CC00] justify-center gap-2 w-55 px-6 py-3 text-white transition hover:scale-105 shadow-lg rounded-full flex items-center"
+                  class="flex min-w-[7.5rem] items-center justify-center gap-[clamp(0.2rem,0.6vw,0.3rem)] rounded-full bg-[#99CC00] px-[clamp(0.6rem,2.2vw,0.9rem)] py-[clamp(0.3rem,1vw,0.45rem)] text-white shadow-lg transition hover:scale-105"
                 >
-                  <img
-                    src="./images/icons/android_icon.svg"
-                    alt="Android Icon"
-                  />
-                  <span class="text-sm font-bold text-white"
-                    >Download on Android</span
-                  >
+                  <img src="./images/icons/android_icon.svg" alt="Android" class="h-[clamp(0.8rem,2vw,1rem)] w-[clamp(0.8rem,2vw,1rem)] shrink-0 object-contain" />
+                  <span class="whitespace-nowrap font-bold text-[clamp(0.6rem,1.4vw,0.75rem)]">Download on Android</span>
                 </button>
               </div>
             </div>
+            </div>
+            <div class="flex-1 min-h-0" aria-hidden="true"></div>
           </div>
-          <div class="bg-[#16162a] border-t border-white/70 w-full">
+          <div class="footer-legal-bar shrink-0 bg-[#16162a] border-t border-white/70 w-full">
             <div
-              class="max-w-[90%] sm:max-w-[85%] p-2 mx-auto flex items-center text-white/70 justify-between font-montserrat tracking-wide text-sm"
+              class="max-w-[90%] sm:max-w-[85%] mx-auto flex items-center justify-center gap-x-3 gap-y-0.5 text-white/70 font-montserrat tracking-wide py-[clamp(0.25rem,1vw,0.375rem)] px-1.5 sm:justify-between"
             >
-              <p class="font-semibold">Terms of Service | Privacy Policy</p>
-              <p class="font-normal">support@myultimateswing.com</p>
+              <p class="font-semibold text-[clamp(0.4375rem,0.95vw,0.625rem)]">Terms of Service | Privacy Policy</p>
+              <p class="font-normal max-w-[50vw] text-[clamp(0.375rem,0.8vw,0.5625rem)] sm:max-w-none truncate">support@myultimateswing.com</p>
             </div>
           </div>
-        </section>
+        </footer>
       </section>
-    </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/Observer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leader-line@1.0.8/leader-line.min.js"></script>
+    <script type="module" src="./js/script.js"></script>
   </body>
 </html>
